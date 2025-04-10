@@ -1,7 +1,5 @@
 html,body{
     background-color: rgb(255, 255, 255);
-    padding: 0%;
-    margin: 0%;
     font-family: 'Courier New', Courier, monospace;
 }
 
@@ -85,3 +83,4 @@ img {
     display: flex;
     flex-wrap: wrap;
 }
+
