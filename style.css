@@ -126,5 +126,7 @@ img {
     grid-template-columns: 2fr 2fr;
     grid-template-areas: 
     'contener contener';
+    background-color: white;
+    margin-top: 10px;
 }
 
