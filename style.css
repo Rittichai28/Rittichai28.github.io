@@ -22,11 +22,15 @@ html,body{
 header{
     background-color: rgb(62, 62, 62);
     padding: 20px;
+    
 }
 
 .menu,.menuhome{
     padding: 10px;
     margin: 10px;
+    box-shadow: -8px 11px 17px -7px rgba(0,0,0,0.81);
+-webkit-box-shadow: -8px 11px 17px -7px rgba(0,0,0,0.81);
+-moz-box-shadow: -8px 11px 17px -7px rgba(0,0,0,0.81);
 }
 
 a {
@@ -57,6 +61,9 @@ a {
     padding: 30px;
     text-decoration: none;
     margin: 10px;
+    box-shadow: -8px 11px 17px -7px rgba(0,0,0,0.81);
+-webkit-box-shadow: -8px 11px 17px -7px rgba(0,0,0,0.81);
+-moz-box-shadow: -8px 11px 17px -7px rgba(0,0,0,0.81);
 }
 .content{
     max-width: 600px;
@@ -83,6 +90,9 @@ img {
     text-decoration: none;
     color: white;
     letter-spacing: 3px;
+    box-shadow: -8px 11px 17px -7px rgba(0,0,0,0.81);
+-webkit-box-shadow: -8px 11px 17px -7px rgba(0,0,0,0.81);
+-moz-box-shadow: -8px 11px 17px -7px rgba(0,0,0,0.81);
 }
 
 .heros{
@@ -92,6 +102,9 @@ img {
     font-size: larger;
     color: rgb(0, 0, 0);
     letter-spacing: 3px;
+    box-shadow: -8px 11px 17px -7px rgba(0,0,0,0.81);
+-webkit-box-shadow: -8px 11px 17px -7px rgba(0,0,0,0.81);
+-moz-box-shadow: -8px 11px 17px -7px rgba(0,0,0,0.81);
 }
 
 .infoheros{
@@ -121,13 +134,3 @@ img {
     flex-wrap: wrap;
 }
 
-.layoutcontent{
-    display: grid;
-    grid-template-columns: 2fr 2fr;
-    grid-template-areas: 
-    'contener contener';
-    background-color: white;
-    margin-top: 10px;
-    justify-content: space-around;
-    display: flex;
-}
