@@ -24,6 +24,11 @@ header{
     padding: 20px;
 }
 
+.menu,.menuhome{
+    padding: 10px;
+    margin: 10px;
+}
+
 a {
     box-shadow: inset 0 0 0 0 #a8a8a8;
     color: #a8a8a8;
