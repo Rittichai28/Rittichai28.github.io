@@ -134,3 +134,28 @@ img {
     flex-wrap: wrap;
 }
 
+.cursor{
+    position: relative;
+    width: 24em;
+    margin: 0 auto;
+    border-right: 2px solid rgb(0, 0, 0);
+    font-size: 30px;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    transform: translateY(-50%);    
+}
+/* Animation */
+.typewriter-animation {
+  animation: 
+    typewriter 5s steps(50) 1s 1 normal both, 
+    blinkingCursor 500ms steps(50) infinite normal;
+}
+@keyframes typewriter {
+  from { width: 0; }
+  to { width: 27%; }
+}
+@keyframes blinkingCursor{
+  from { border-right-color: rgb(0, 0, 0); }
+  to { border-right-color: transparent; }
+}
