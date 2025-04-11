@@ -85,16 +85,16 @@ img {
 }
 
 .heros{
-    background-color: rgb(75, 75, 75);
+    background-color: rgb(255, 255, 255);
     padding: 50px;
     margin: 0px;
     font-size: larger;
-    color: white;
+    color: rgb(0, 0, 0);
 }
 
 .infoheros{
     font-size: medium;
-    color: white;
+    color: rgb(0, 0, 0);
 }
 
 .herosbutton{
