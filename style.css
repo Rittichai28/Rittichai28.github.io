@@ -121,5 +121,10 @@ img {
     flex-wrap: wrap;
 }
 
-
+.layoutcontent{
+    display: grid;
+    grid-template-columns: 2fr 2fr;
+    grid-template-areas: 
+    'contener contener';
+}
 
