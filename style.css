@@ -153,7 +153,7 @@ img {
 }
 @keyframes typewriter {
   from { width: 0; }
-  to { width: 27%; }
+  to { width: 100%; }
 }
 @keyframes blinkingCursor{
   from { border-right-color: rgb(0, 0, 0); }
