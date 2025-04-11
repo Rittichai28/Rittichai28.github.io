@@ -1,0 +1,211 @@
+html,body{
+    background: linear-gradient(-45deg, #e8e8e8, #979797, #404040, #000000);
+	background-size: 400% 400%;
+	animation: gradient 15s ease infinite;
+	height: 100vh;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+
+
+header{
+    background-color: rgb(62, 62, 62);
+    padding: 20px;
+    
+}
+
+.menu,.menuhome{
+    padding: 10px;
+    margin: 10px;
+    box-shadow: -8px 11px 17px -7px rgba(0,0,0,0.81);
+-webkit-box-shadow: -8px 11px 17px -7px rgba(0,0,0,0.81);
+-moz-box-shadow: -8px 11px 17px -7px rgba(0,0,0,0.81);
+}
+
+a {
+    box-shadow: inset 0 0 0 0 #a8a8a8;
+    color: #a8a8a8;
+    padding: 0 .25rem;
+    margin: 0 -.25rem;
+    transition: color .3s ease-in-out, box-shadow .3s ease-in-out;
+  }
+  a:hover {
+    color: #000000;
+    box-shadow: inset 200px 0 0 0 #a8a8a8;;
+  }
+  
+  a {
+    color: #ffffff;
+    font-size: medium;
+    line-height: 1.5;
+    text-decoration: none;
+  }
+
+.menuhome{
+    font-size: large;
+}
+
+.contener{
+    background-color: rgb(255, 255, 255);
+    padding: 30px;
+    text-decoration: none;
+    margin: 10px;
+    box-shadow: -8px 11px 17px -7px rgba(0,0,0,0.81);
+-webkit-box-shadow: -8px 11px 17px -7px rgba(0,0,0,0.81);
+-moz-box-shadow: -8px 11px 17px -7px rgba(0,0,0,0.81);
+}
+.content{
+    max-width: 600px;
+    margin: auto;
+}
+
+img {
+    width: 100%;
+
+}
+
+.infobt{
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+    padding: 10px;
+    margin: 10px;
+    background-color: rgb(75, 75, 75);
+}
+
+.footerken{
+    background-color: rgb(111, 111, 111);
+    padding: 30px;
+    margin: 0;
+    text-decoration: none;
+    color: white;
+    letter-spacing: 3px;
+    box-shadow: -8px 11px 17px -7px rgba(0,0,0,0.81);
+-webkit-box-shadow: -8px 11px 17px -7px rgba(0,0,0,0.81);
+-moz-box-shadow: -8px 11px 17px -7px rgba(0,0,0,0.81);
+}
+
+.heros{
+    background-color: rgb(255, 255, 255);
+    padding: 50px;
+    margin: 0px;
+    font-size: larger;
+    color: rgb(0, 0, 0);
+    letter-spacing: 3px;
+    box-shadow: -8px 11px 17px -7px rgba(0,0,0,0.81);
+-webkit-box-shadow: -8px 11px 17px -7px rgba(0,0,0,0.81);
+-moz-box-shadow: -8px 11px 17px -7px rgba(0,0,0,0.81);
+}
+
+.infoheros{
+    font-size: medium;
+    color: rgb(0, 0, 0);
+    letter-spacing: 3px;
+}
+
+.herosbutton{
+    padding: 10px;
+    background-color: rgb(62, 62, 62);
+    text-decoration: none;
+    color: white;
+    margin: 10px;
+    display: inline-block;
+    
+}
+
+.buttonheros{
+    padding: 10px;
+    margin: 10px;
+    display: inline-block;
+}
+
+.layoutcontenter{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+h1 {
+    font-size: x-large;
+    color: rgb(0, 0, 0);
+    text-align: left;
+    font-family: Lato, sans-serif;
+    font-weight: 700;
+    margin: 1rem 0 1rem 2rem;
+  }
+  
+  /* Typewriter effect 1 */
+  @keyframes typing {
+    0.0000%, 27.3488% { content: ""; }
+    1.1395%, 26.2093% { content: "F"; }
+    2.2791%, 25.0698% { content: "Fr"; }
+    3.4186%, 23.9302% { content: "Fri"; }
+    4.5581%, 22.7907% { content: "Frie"; }
+    5.6977%, 21.6512% { content: "Frien"; }
+    6.8372%, 20.5116% { content: "Friend"; }
+  
+    30.7674%, 51.2791% { content: ""; }
+    31.9070%, 50.1395% { content: "P"; }
+    33.0465%, 49.0000% { content: "Ph"; }
+    34.1860%, 47.8605% { content: "Pho"; }
+    35.3256%, 46.7209% { content: "Phot"; }
+    36.1291%, 45.6134% { content: "Photo"; }
+    37.1291%, 44.6134% { content: "Photos"; }
+  
+  
+  }
+  
+  @keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+  }
+  
+  .typewriter {
+    --caret: currentcolor;
+  }
+  
+  .typewriter::before {
+    content: "";
+    animation: typing 13.5s infinite;
+  }
+  
+  .typewriter::after {
+    content: "";
+    border-right: 1px solid var(--caret);
+    animation: blink 0.5s linear infinite;
+  }
+  
+  .typewriter.thick::after {
+    border-right: 1ch solid var(--caret);
+  }
+  
+  .typewriter.nocaret::after {
+    border-right: 0;
+  }
+  
+  
+  @media (prefers-reduced-motion) {
+    .typewriter::after {
+      animation: none;
+    }
+    
+    @keyframes sequencePopup {
+      0%, 100% { content: "Friends"; }
+      25% { content: "Photos"; }
+
+    }
+  
+    .typewriter::before {
+      content: "developer";
+      animation: sequencePopup 12s linear infinite;
+    }
+  }
