@@ -82,6 +82,7 @@ img {
     margin: 0;
     text-decoration: none;
     color: white;
+    letter-spacing: 3px;
 }
 
 .heros{
@@ -90,11 +91,13 @@ img {
     margin: 0px;
     font-size: larger;
     color: rgb(0, 0, 0);
+    letter-spacing: 3px;
 }
 
 .infoheros{
     font-size: medium;
     color: rgb(0, 0, 0);
+    letter-spacing: 3px;
 }
 
 .herosbutton{
