@@ -22,7 +22,6 @@ height: 100vh;
 header{
   background-color: rgb(62, 62, 62);
   padding: 20px;
-  
 }
 
 .menu,.menuhome{
@@ -160,8 +159,6 @@ img {
   35.3256%, 46.7209% { content: "Phot"; }
   36.1291%, 45.6134% { content: "Photo"; }
   37.1291%, 44.6134% { content: "Photos"; }
-
-
 }
 
 @keyframes blink {
@@ -208,4 +205,44 @@ img {
     content: "developer";
     animation: sequencePopup 12s linear infinite;
   }
+}
+
+
+.modal {
+  visibility: hidden;
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #0000003b;
+}
+
+.modal:target {
+  visibility: visible;
+  opacity: 1;
+}
+
+.modal__content {
+  border-radius: 4px;
+  position: relative;
+  width: 500px;
+  max-width: 90%;
+  background: #fff;
+  padding: 1em 2em;
+}
+
+
+.modal__close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  color: #585858;
+  text-decoration: none;
+  font-size: 50px;
+  padding: 10px;
 }
