@@ -1,0 +1,8 @@
+ .custom-box {
+    padding: 20px;
+    background-color: #f8f9fa;
+    border: 1px solid #dee2e6;
+    border-radius: 8px;
+    text-align: center;
+    height: 100%;
+}
