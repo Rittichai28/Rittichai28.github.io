@@ -1,449 +1,711 @@
 <!DOCTYPE html>
-<html lang="th" data-bs-theme="light">
+<html lang="th">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gallery</title>
-</head>
-<body>
-<header class="d-flex justify-content-center py-3 border-bottom">
-  <div class="container">
-    <ul class="nav nav-pills justify-content-center">
-      <li class="nav-item">
-        <a href="index.html" class="nav-link active" aria-current="page">Home</a>
-      </li>
-      <li class="nav-item">
-        <a href="index2.html" class="nav-link">About</a>
-      </li>
-    </ul>
-  </div>
-</header>
-</head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gallery</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <style>
-        .card-img-top {
-            height: 200px;
-            object-fit: cover; /* ให้รูปตัดพอดีกรอบ ไม่เบี้ยว */
-            cursor: pointer;
-        }
-        .card {
-            transition: transform 0.2s;
-            height: 100%;
-        }
-        .card:hover {
-            transform: translateY(-5px); /* เอฟเฟกต์ลอยขึ้นเล็กน้อย */
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gallery</title>
 
-<body>
-    
-    <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
-        
-        <div class="carousel-indicators">
-            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"></button>
-            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"></button>
-            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"></button>
-        </div>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;1,9..144,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 
-<div class="carousel-inner">
-        <div class="carousel-item active">
-            <img src="IMG/hero1.JPG" class="d-block w-100" alt="รูปที่ 1" style="height: auto; object-fit: contain;">
-                <div class="carousel-caption d-block p-4" 
-                    style="bottom: 0; left: 0; right: 0; margin-bottom: 20px;">
-                <h2 class="fw-bold text-white mb-1">Photos Gallery</h2>
-                <p class="text-white-50 mb-0">"Goodbyes are not the end."</p>
-            </div>
-        </div>
-
-        <div class="carousel-item">
-            <img src="IMG/hero2.jpg" class="d-block w-100" alt="รูปที่ 2" style="height: auto; object-fit: contain;">
-                <div class="carousel-caption d-block p-4" 
-                    style="bottom: 0; left: 0; right: 0; margin-bottom: 20px;">
-                <h2 class="fw-bold text-white mb-1">Photos Gallery</h2>
-                <p class="text-white-50 mb-0">"Goodbyes are not the end."</p>
-            </div>
-        </div>
-
-        <div class="carousel-item">
-            <img src="IMG/hero3.jpg" class="d-block w-100" alt="รูปที่ 3" style="height: auto; object-fit: contain;">
-                <div class="carousel-caption d-block p-4" 
-                    style="bottom: 0; left: 0; right: 0; margin-bottom: 20px;">
-                <h2 class="fw-bold text-white mb-1">Photos Gallery</h2>
-                <p class="text-white-50 mb-0">"Goodbyes are not the end."</p>
-            </div> 
-        </div>
-    </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-        </button>
-    </div>
-    </div>
-
-
-<!--Modals-->
-<div class="container py-5" style="margin-top: 50px;">
-    <div class="row g-4">
-        <div class="col-md-4">
-            <div class="card border-0 shadow-lg position-relative overflow-hidden" style="border-radius: 20px; cursor: pointer;" data-bs-toggle="modal" data-bs-target="#imageModal1">
-                <img src="IMG/img1.JPG" class="card-img" alt="Image 1" style="height: 500px; object-fit: cover;">
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="card border-0 shadow-lg position-relative overflow-hidden" style="border-radius: 20px; cursor: pointer;" data-bs-toggle="modal" data-bs-target="#imageModal2">
-                <img src="IMG/img2.JPG" class="card-img" alt="Image 2" style="height: 500px; object-fit: cover;">
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="card border-0 shadow-lg position-relative overflow-hidden" style="border-radius: 20px; cursor: pointer;" data-bs-toggle="modal" data-bs-target="#imageModal3">
-                <img src="IMG/img3.JPG" class="card-img" alt="Image 3" style="height: 500px; object-fit: cover;">
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="card border-0 shadow-lg position-relative overflow-hidden" style="border-radius: 20px; cursor: pointer;" data-bs-toggle="modal" data-bs-target="#imageModal4">
-                <img src="IMG/img4.JPEG" class="card-img" alt="Image 4" style="height: 500px; object-fit: cover;">
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="card border-0 shadow-lg position-relative overflow-hidden" style="border-radius: 20px; cursor: pointer;" data-bs-toggle="modal" data-bs-target="#imageModal5">
-                <img src="IMG/img5.JPEG" class="card-img" alt="Image 5" style="height: 500px; object-fit: cover;">
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="card border-0 shadow-lg position-relative overflow-hidden" style="border-radius: 20px; cursor: pointer;" data-bs-toggle="modal" data-bs-target="#imageModal6">
-                <img src="IMG/img6.jpg" class="card-img" alt="Image 6" style="height: 500px; object-fit: cover;">
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="card border-0 shadow-lg position-relative overflow-hidden" style="border-radius: 20px; cursor: pointer;" data-bs-toggle="modal" data-bs-target="#imageModal7">
-                <img src="IMG/img7.jpg" class="card-img" alt="Image 7" style="height: 500px; object-fit: cover;">
-            </div>  
-        </div>
-        <div class="col-md-4">
-            <div class="card border-0 shadow-lg position-relative overflow-hidden" style="border-radius: 20px; cursor: pointer;" data-bs-toggle="modal" data-bs-target="#imageModal8">
-                <img src="IMG/img8.jpg" class="card-img" alt="Image 8" style="height: 500px; object-fit: cover;">
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="card border-0 shadow-lg position-relative overflow-hidden" style="border-radius: 20px; cursor: pointer;" data-bs-toggle="modal" data-bs-target="#imageModal9">
-                <img src="IMG/img9.jpg" class="card-img" alt="Image 9" style="height: 500px; object-fit: cover;">
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="card border-0 shadow-lg position-relative overflow-hidden" style="border-radius: 20px; cursor: pointer;" data-bs-toggle="modal" data-bs-target="#imageModal10">
-                <img src="IMG/img10.jpg" class="card-img" alt="Image 10" style="height: 500px; object-fit: cover;">
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="card border-0 shadow-lg position-relative overflow-hidden" style="border-radius: 20px; cursor: pointer;" data-bs-toggle="modal" data-bs-target="#imageModal11">
-                <img src="IMG/img11.jpg" class="card-img" alt="Image 11" style="height: 500px; object-fit: cover;">
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="card border-0 shadow-lg position-relative overflow-hidden" style="border-radius: 20px; cursor: pointer;" data-bs-toggle="modal" data-bs-target="#imageModal12">
-                <img src="IMG/img12.jpg" class="card-img" alt="Image 12" style="height: 500px; object-fit: cover;">
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="card border-0 shadow-lg position-relative overflow-hidden" style="border-radius: 20px; cursor: pointer;" data-bs-toggle="modal" data-bs-target="#imageModal14">
-                <img src="IMG/img14.jpg" class="card-img" alt="Image 14" style="height: 500px; object-fit: cover;">
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="card border-0 shadow-lg position-relative overflow-hidden" style="border-radius: 20px; cursor: pointer;" data-bs-toggle="modal" data-bs-target="#imageModal15">
-                <img src="IMG/img15.jpg" class="card-img" alt="Image 15" style="height: 500px; object-fit: cover;">
-            </div>
-        </div>
-<!--END-->
-    </div>
-</div>
-
-
-<!-- Modals for each image -->
-<div class="modal fade" id="imageModal1" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog modal-lg modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body p-0">
-                <img src="IMG/img1.JPG" class="img-fluid w-100" alt="Large View">
-                <p class="p-3">© 2023-2026</p>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="modal fade" id="imageModal2" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog modal-lg modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body p-0">
-                <img src="IMG/img2.JPG" class="img-fluid w-100" alt="Large View">
-                <p class="p-3">© 2023-2026</p>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="modal fade" id="imageModal3" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog modal-lg modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body p-0">
-                <img src="IMG/img3.JPG" class="img-fluid w-100" alt="Large View">
-                <p class="p-3">© 2023-2026</p>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="modal fade" id="imageModal4" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog modal-lg modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body p-0">
-                <img src="IMG/img4.JPEG" class="img-fluid w-100" alt="Large View">
-                <p class="p-3">© 2023-2026</p>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="modal fade" id="imageModal5" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog modal-lg modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body p-0">
-                <img src="IMG/img5.JPEG" class="img-fluid w-100" alt="Large View">
-                <p class="p-3">© 2023-2026</p>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="modal fade" id="imageModal6" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog modal-lg modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body p-0">
-                <img src="IMG/img6.jpg" class="img-fluid w-100" alt="Large View">
-                <p class="p-3">© 2023-2026</p>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="modal fade" id="imageModal7" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog modal-lg modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body p-0">
-                <img src="IMG/img7.jpg" class="img-fluid w-100" alt="Large View">
-                <p class="p-3">© 2023-2026</p>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="modal fade" id="imageModal8" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog modal-lg modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body p-0">
-                <img src="IMG/img8.jpg" class="img-fluid w-100" alt="Large View">
-                <p class="p-3">© 2023-2026</p>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="modal fade" id="imageModal9" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog modal-lg modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body p-0">
-                <img src="IMG/img9.jpg" class="img-fluid w-100" alt="Large View">
-                <p class="p-3">© 2023-2026</p>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="modal fade" id="imageModal10" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog modal-lg modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body p-0">
-                <img src="IMG/img10.jpg" class="img-fluid w-100" alt="Large View">
-                <p class="p-3">© 2023-2026</p>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="modal fade" id="imageModal11" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog modal-lg modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body p-0">
-                <img src="IMG/img11.jpg" class="img-fluid w-100" alt="Large View">
-                <p class="p-3">© 2023-2026</p>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="modal fade" id="imageModal12" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog modal-lg modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body p-0">
-                <img src="IMG/img12.jpg" class="img-fluid w-100" alt="Large View">
-                <p class="p-3">© 2023-2026</p>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="modal fade" id="imageModal14" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog modal-lg modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body p-0">
-                <img src="IMG/img14.jpg" class="img-fluid w-100" alt="Large View">
-                <p class="p-3">© 2023-2026</p>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="modal fade" id="imageModal15" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog modal-lg modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body p-0">
-                <img src="IMG/img15.jpg" class="img-fluid w-100" alt="Large View">
-                <p class="p-3">© 2023-2026</p>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- End of Modals -->
- <button type="button" id="btn-back-to-top" class="btn btn-primary">
-  <i class="fas fa-arrow-up"></i> ↑
-</button>
 <style>
-#btn-back-to-top {
-  position: fixed;
-  bottom: 30px;
-  right: 30px;
-  width: 70px;
-  height: 70px;
-  border-radius: 100%;
-  z-index: 1000;
-  font-size: 25px;
+  :root{
+    --bg-0:#0a0e1a;
+    --bg-1:#0d1326;
+    --bg-2:#12182b;
+    --glow-cyan:#7dd3fc;
+    --glass-fill:rgba(255,255,255,0.055);
+    --glass-fill-hover:rgba(255,255,255,0.09);
+    --glass-border:rgba(255,255,255,0.14);
+    --text-hi:#f3f4f8;
+    --text-mid:rgba(243,244,248,0.72);
+    --text-low:rgba(243,244,248,0.45);
+    --radius-lg:28px;
+    --radius-md:20px;
+    --radius-sm:14px;
+  }
 
-  opacity: 0;
-  visibility: hidden;
-  transition: all 0.4s ease-in-out;
-  
-  border: none;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
 
-#btn-back-to-top.show {
-  opacity: 1;
-  visibility: visible;
-  transform: translateY(0);
-}
+  body{
+    margin:0;
+    background:
+      radial-gradient(ellipse 80% 50% at 20% -10%, rgba(125,211,252,0.10), transparent),
+      radial-gradient(ellipse 70% 50% at 100% 20%, rgba(167,139,250,0.10), transparent),
+      radial-gradient(ellipse 60% 40% at 50% 100%, rgba(240,171,252,0.06), transparent),
+      linear-gradient(180deg, var(--bg-0), var(--bg-1) 40%, var(--bg-2));
+    color:var(--text-hi);
+    font-family:'Inter', -apple-system, sans-serif;
+    font-weight:400;
+    -webkit-font-smoothing:antialiased;
+    min-height:100vh;
+    overflow-x:hidden;
+  }
 
+  /* ambient floating orbs */
+  .orb{
+    position:fixed;
+    border-radius:50%;
+    filter:blur(60px);
+    opacity:0.35;
+    pointer-events:none;
+    z-index:0;
+  }
+  .orb-1{width:420px;height:420px;background:var(--glow-cyan);top:-120px;left:-100px;animation:drift1 22s ease-in-out infinite;}
+  .orb-2{width:480px;height:480px;background:var(--glow-violet);top:30%;right:-160px;animation:drift2 26s ease-in-out infinite;}
+  .orb-3{width:360px;height:360px;background:var(--glow-rose);bottom:-140px;left:30%;animation:drift3 28s ease-in-out infinite;}
 
-#btn-back-to-top:not(.show) {
-  transform: translateY(20px);
-}
+  @keyframes drift1{0%,100%{transform:translate(0,0);}50%{transform:translate(60px,40px);}}
+  @keyframes drift2{0%,100%{transform:translate(0,0);}50%{transform:translate(-50px,60px);}}
+  @keyframes drift3{0%,100%{transform:translate(0,0);}50%{transform:translate(40px,-50px);}}
 
-#btn-back-to-top:hover {
-  transform: translateY(-5px) !important; 
-  background-color: #0056b3;
-}
+  @media (prefers-reduced-motion: reduce){
+    .orb{animation:none !important;}
+    *{transition-duration:0.01ms !important; animation-duration:0.01ms !important;}
+  }
 
+  a{color:inherit; text-decoration:none;}
+
+  /* ---------- NAV ---------- */
+  .glass-nav{
+    position:sticky;
+    top:0;
+    z-index:50;
+    display:flex;
+    justify-content:center;
+    padding:18px 24px;
+    backdrop-filter:blur(20px) saturate(150%);
+    -webkit-backdrop-filter:blur(20px) saturate(150%);
+    background:rgba(10,14,26,0.55);
+    border-bottom:1px solid var(--glass-border);
+  }
+  .nav-pill-group{
+    display:flex;
+    gap:6px;
+    padding:6px;
+    border-radius:999px;
+    background:var(--glass-fill);
+    border:1px solid var(--glass-border);
+  }
+  .nav-pill-group a{
+    padding:9px 22px;
+    border-radius:999px;
+    font-size:14px;
+    letter-spacing:0.02em;
+    color:var(--text-mid);
+    transition:all .25s ease;
+  }
+  .nav-pill-group a.active{
+    background:linear-gradient(135deg, rgba(125,211,252,0.25), rgba(167,139,250,0.25));
+    color:var(--text-hi);
+    box-shadow:0 0 18px rgba(125,211,252,0.25), inset 0 0 0 1px rgba(255,255,255,0.18);
+  }
+  .nav-pill-group a:not(.active):hover{
+    color:var(--text-hi);
+    background:rgba(255,255,255,0.06);
+  }
+
+  /* ---------- HERO / CAROUSEL ---------- */
+  .hero-wrap{
+    position:relative;
+    max-width:1400px;
+    margin:32px auto 0;
+    padding:0 24px;
+    z-index:1;
+  }
+  .hero-frame{
+    position:relative;
+    border-radius:32px;
+    overflow:hidden;
+    border:1px solid var(--glass-border);
+    box-shadow:0 30px 80px -20px rgba(0,0,0,0.6), 0 0 60px rgba(125,211,252,0.08);
+    background:var(--glass-fill);
+  }
+  .hero-slide{
+    position:relative;
+    display:none;
+    width:100%;
+    aspect-ratio:16/8;
+  }
+  .hero-slide.active{display:block;}
+  .hero-slide img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+    filter:saturate(1.05) contrast(1.02);
+  }
+  .hero-overlay{
+    position:absolute;
+    inset:0;
+    background:linear-gradient(180deg, rgba(10,14,26,0) 40%, rgba(8,10,20,0.85) 100%);
+  }
+  .hero-caption{
+    position:absolute;
+    left:0; right:0; bottom:0;
+    padding:48px 56px;
+  }
+  .hero-caption h2{
+    font-family:'Fraunces', serif;
+    font-weight:500;
+    font-size:clamp(28px, 4vw, 48px);
+    margin:0 0 8px;
+    letter-spacing:-0.01em;
+    text-shadow:0 2px 24px rgba(0,0,0,0.4);
+  }
+  .hero-caption p{
+    margin:0;
+    font-style:italic;
+    font-family:'Fraunces', serif;
+    font-weight:400;
+    font-size:clamp(14px, 1.6vw, 18px);
+    color:var(--text-mid);
+  }
+
+  .hero-dots{
+    position:absolute;
+    left:50%;
+    bottom:18px;
+    transform:translateX(-50%);
+    display:flex;
+    gap:8px;
+    z-index:2;
+  }
+  .hero-dots button{
+    width:8px; height:8px;
+    border-radius:50%;
+    border:none;
+    background:rgba(255,255,255,0.3);
+    cursor:pointer;
+    transition:all .3s ease;
+    padding:0;
+  }
+  .hero-dots button.active{
+    width:24px;
+    background:linear-gradient(90deg, var(--glow-cyan), var(--glow-violet));
+    box-shadow:0 0 10px rgba(125,211,252,0.6);
+  }
+
+  .hero-arrow{
+    position:absolute;
+    top:50%;
+    transform:translateY(-50%);
+    width:46px; height:46px;
+    border-radius:50%;
+    border:1px solid var(--glass-border);
+    background:rgba(10,14,26,0.4);
+    backdrop-filter:blur(10px);
+    color:var(--text-hi);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    cursor:pointer;
+    z-index:2;
+    transition:all .25s ease;
+    font-size:18px;
+  }
+  .hero-arrow:hover{
+    background:rgba(255,255,255,0.14);
+    box-shadow:0 0 18px rgba(125,211,252,0.35);
+  }
+  .hero-arrow.prev{left:20px;}
+  .hero-arrow.next{right:20px;}
+
+  /* ---------- SECTION HEADER ---------- */
+  .section-head{
+    max-width:1400px;
+    margin:80px auto 32px;
+    padding:0 24px;
+    text-align:center;
+    position:relative;
+    z-index:1;
+  }
+  .section-head .eyebrow{
+    font-size:12px;
+    letter-spacing:0.18em;
+    text-transform:uppercase;
+    color:var(--text-low);
+  }
+  .section-head h1{
+    font-family:'Fraunces', serif;
+    font-weight:500;
+    font-style:italic;
+    font-size:clamp(30px, 4vw, 44px);
+    margin:8px 0 0;
+    background:linear-gradient(135deg, #ffffff, #c9d6ff 60%, var(--glow-violet));
+    -webkit-background-clip:text;
+    background-clip:text;
+    -webkit-text-fill-color:transparent;
+  }
+
+  /* ---------- GALLERY GRID ---------- */
+  .gallery-grid{
+    max-width:1400px;
+    margin:0 auto;
+    padding:0 24px 40px;
+    display:grid;
+    grid-template-columns:repeat(6, 1fr);
+    grid-auto-rows:130px;
+    gap:18px;
+    position:relative;
+    z-index:1;
+  }
+  .g-tile{
+    position:relative;
+    grid-column:span 2;
+    grid-row:span 2;
+    border-radius:var(--radius-md);
+    overflow:hidden;
+    cursor:pointer;
+    border:1px solid var(--glass-border);
+    background:var(--glass-fill);
+    isolation:isolate;
+  }
+  /* bento variety pattern */
+  .g-tile.tall{grid-row:span 3;}
+  .g-tile.wide{grid-column:span 3;}
+  .g-tile.big{grid-column:span 3; grid-row:span 3;}
+
+  .g-tile img{
+    width:100%; height:100%;
+    object-fit:cover;
+    display:block;
+    transition:transform .6s cubic-bezier(.2,.8,.2,1), filter .6s ease;
+    filter:saturate(1.0);
+  }
+  .g-tile::before{
+    content:'';
+    position:absolute;
+    inset:0;
+    background:radial-gradient(circle 220px at var(--mx,50%) var(--my,50%), rgba(255,255,255,0.22), transparent 60%);
+    opacity:0;
+    transition:opacity .35s ease;
+    z-index:2;
+    mix-blend-mode:overlay;
+    pointer-events:none;
+  }
+  .g-tile::after{
+    content:'';
+    position:absolute;
+    inset:0;
+    box-shadow:inset 0 0 0 1px rgba(255,255,255,0.08);
+    border-radius:inherit;
+    z-index:3;
+    pointer-events:none;
+  }
+  .g-tile:hover::before{opacity:1;}
+  .g-tile:hover img{transform:scale(1.07);}
+  .g-tile:hover{
+    box-shadow:0 16px 40px -12px rgba(0,0,0,0.55), 0 0 30px rgba(125,211,252,0.18);
+    border-color:rgba(255,255,255,0.28);
+  }
+  .g-tile-label{
+    position:absolute;
+    left:14px; bottom:12px;
+    z-index:2;
+    font-size:12px;
+    letter-spacing:0.05em;
+    color:rgba(255,255,255,0.85);
+    opacity:0;
+    transform:translateY(6px);
+    transition:all .3s ease;
+    text-shadow:0 2px 8px rgba(0,0,0,0.6);
+  }
+  .g-tile:hover .g-tile-label{opacity:1; transform:translateY(0);}
+  .g-tile-scrim{
+    position:absolute;
+    inset:0;
+    background:linear-gradient(180deg, transparent 50%, rgba(0,0,0,0.55) 100%);
+    z-index:1;
+    opacity:0;
+    transition:opacity .3s ease;
+  }
+  .g-tile:hover .g-tile-scrim{opacity:1;}
+
+  @media (max-width:980px){
+    .gallery-grid{grid-template-columns:repeat(4,1fr); grid-auto-rows:110px;}
+    .g-tile{grid-column:span 2 !important;}
+    .g-tile.big, .g-tile.wide{grid-column:span 4 !important;}
+  }
+  @media (max-width:600px){
+    .gallery-grid{grid-template-columns:repeat(2,1fr); grid-auto-rows:160px; gap:12px;}
+    .g-tile, .g-tile.wide, .g-tile.big{grid-column:span 2 !important; grid-row:span 2 !important;}
+  }
+
+  /* ---------- LIGHTBOX (replacing bootstrap modal) ---------- */
+  .lightbox{
+    position:fixed;
+    inset:0;
+    z-index:200;
+    display:none;
+    align-items:center;
+    justify-content:center;
+    background:rgba(6,8,16,0.82);
+    backdrop-filter:blur(14px) saturate(140%);
+    -webkit-backdrop-filter:blur(14px) saturate(140%);
+    padding:24px;
+  }
+  .lightbox.open{display:flex;}
+  .lightbox-card{
+    position:relative;
+    max-width:min(1000px, 92vw);
+    max-height:88vh;
+    border-radius:24px;
+    overflow:hidden;
+    border:1px solid var(--glass-border);
+    background:var(--glass-fill);
+    box-shadow:0 40px 100px -20px rgba(0,0,0,0.7), 0 0 80px rgba(125,211,252,0.12);
+    animation:lightboxIn .35s cubic-bezier(.2,.8,.2,1);
+  }
+  @keyframes lightboxIn{
+    from{opacity:0; transform:scale(0.94) translateY(12px);}
+    to{opacity:1; transform:scale(1) translateY(0);}
+  }
+  .lightbox-card img{
+    display:block;
+    max-width:100%;
+    max-height:80vh;
+    width:auto;
+    object-fit:contain;
+  }
+  .lightbox-caption{
+    padding:14px 20px;
+    font-size:13px;
+    color:var(--text-low);
+    border-top:1px solid var(--glass-border);
+  }
+  .lightbox-close{
+    position:absolute;
+    top:14px; right:14px;
+    width:38px; height:38px;
+    border-radius:50%;
+    border:1px solid var(--glass-border);
+    background:rgba(10,14,26,0.55);
+    backdrop-filter:blur(10px);
+    color:#fff;
+    font-size:18px;
+    display:flex; align-items:center; justify-content:center;
+    cursor:pointer;
+    z-index:2;
+    transition:all .25s ease;
+  }
+  .lightbox-close:hover{background:rgba(255,255,255,0.18); box-shadow:0 0 16px rgba(255,255,255,0.25);}
+  .lightbox-nav{
+    position:fixed;
+    top:50%;
+    transform:translateY(-50%);
+    width:50px; height:50px;
+    border-radius:50%;
+    border:1px solid var(--glass-border);
+    background:rgba(10,14,26,0.55);
+    backdrop-filter:blur(10px);
+    color:#fff;
+    font-size:20px;
+    display:flex; align-items:center; justify-content:center;
+    cursor:pointer;
+    z-index:201;
+    transition:all .25s ease;
+  }
+  .lightbox-nav:hover{background:rgba(255,255,255,0.18); box-shadow:0 0 18px rgba(125,211,252,0.3);}
+  .lightbox-nav.prev{left:max(16px, 3vw);}
+  .lightbox-nav.next{right:max(16px, 3vw);}
+
+  /* ---------- BACK TO TOP ---------- */
+  #btn-back-to-top{
+    position:fixed;
+    bottom:28px; right:28px;
+    width:54px; height:54px;
+    border-radius:50%;
+    border:1px solid var(--glass-border);
+    background:rgba(255,255,255,0.07);
+    backdrop-filter:blur(14px);
+    color:var(--text-hi);
+    font-size:18px;
+    display:flex; align-items:center; justify-content:center;
+    cursor:pointer;
+    z-index:90;
+    opacity:0; visibility:hidden;
+    transform:translateY(16px);
+    transition:all .35s ease;
+    box-shadow:0 8px 24px rgba(0,0,0,0.35);
+  }
+  #btn-back-to-top.show{opacity:1; visibility:visible; transform:translateY(0);}
+  #btn-back-to-top:hover{
+    background:linear-gradient(135deg, rgba(125,211,252,0.3), rgba(167,139,250,0.3));
+    box-shadow:0 0 22px rgba(125,211,252,0.4);
+    transform:translateY(-3px);
+  }
+
+  /* ---------- FOOTER ---------- */
+  footer.site-footer{
+    position:relative;
+    z-index:1;
+    margin-top:80px;
+    padding:64px 24px 40px;
+    text-align:center;
+    border-top:1px solid var(--glass-border);
+    background:linear-gradient(180deg, transparent, rgba(0,0,0,0.25));
+  }
+  footer.site-footer .farewell{
+    font-family:'Fraunces', serif;
+    font-style:italic;
+    font-weight:400;
+    font-size:clamp(16px, 2.2vw, 22px);
+    color:var(--text-mid);
+    max-width:640px;
+    margin:0 auto 8px;
+    line-height:1.6;
+  }
+  footer.site-footer .signed{
+    font-family:'Fraunces', serif;
+    font-style:italic;
+    color:var(--text-low);
+    font-size:14px;
+    margin-bottom:36px;
+  }
+  footer.site-footer .foot-links{
+    display:flex;
+    justify-content:center;
+    gap:28px;
+    list-style:none;
+    padding:0 0 24px;
+    margin:0 0 24px;
+    border-bottom:1px solid var(--glass-border);
+  }
+  footer.site-footer .foot-links a{
+    font-size:13px;
+    letter-spacing:0.04em;
+    color:var(--text-low);
+    transition:color .2s ease;
+  }
+  footer.site-footer .foot-links a:hover{color:var(--text-hi);}
+  footer.site-footer .copyright{
+    font-size:12px;
+    color:var(--text-low);
+    letter-spacing:0.03em;
+  }
+
+  .visually-hidden{
+    position:absolute !important;
+    width:1px; height:1px;
+    overflow:hidden;
+    clip:rect(0 0 0 0);
+  }
+
+  /* focus visibility */
+  a:focus-visible, button:focus-visible{
+    outline:2px solid var(--glow-cyan);
+    outline-offset:2px;
+  }
 </style>
+</head>
+<body>
+
+<div class="orb orb-1" aria-hidden="true"></div>
+<div class="orb orb-2" aria-hidden="true"></div>
+<div class="orb orb-3" aria-hidden="true"></div>
+
+<!-- NAV -->
+<header class="glass-nav">
+  <nav class="nav-pill-group">
+    <a href="https://rittichai28.github.io/index.html" class="active" aria-current="page">Home</a>
+    <a href="https://rittichai28.github.io/index2.html">About</a>
+  </nav>
+</header>
+
+<!-- HERO CAROUSEL -->
+<section class="hero-wrap">
+  <div class="hero-frame" id="hero">
+    <div class="hero-slide active" data-index="0">
+      <img src="./Gallery_files/hero1.JPG" alt="ภาพที่ 1 — ความทรงจำ">
+      <div class="hero-overlay"></div>
+      <div class="hero-caption">
+        <h2>Photos Gallery</h2>
+        <p>"Goodbyes are not the end."</p>
+      </div>
+    </div>
+    <div class="hero-slide" data-index="1">
+      <img src="./Gallery_files/hero2.jpg" alt="ภาพที่ 2 — ความทรงจำ">
+      <div class="hero-overlay"></div>
+      <div class="hero-caption">
+        <h2>Photos Gallery</h2>
+        <p>"Goodbyes are not the end."</p>
+      </div>
+    </div>
+    <div class="hero-slide" data-index="2">
+      <img src="./Gallery_files/hero3.jpg" alt="ภาพที่ 3 — ความทรงจำ">
+      <div class="hero-overlay"></div>
+      <div class="hero-caption">
+        <h2>Photos Gallery</h2>
+        <p>"Goodbyes are not the end."</p>
+      </div>
+    </div>
+
+    <button class="hero-arrow prev" aria-label="ภาพก่อนหน้า">&#8249;</button>
+    <button class="hero-arrow next" aria-label="ภาพถัดไป">&#8250;</button>
+    <div class="hero-dots">
+      <button class="active" data-go="0" aria-label="ไปยังภาพที่ 1"></button>
+      <button data-go="1" aria-label="ไปยังภาพที่ 2"></button>
+      <button data-go="2" aria-label="ไปยังภาพที่ 3"></button>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION HEAD -->
+<div class="section-head">
+
+</div>
+
+<!-- GALLERY GRID -->
+<section class="gallery-grid" id="gallery">
+  <!-- Tiles populated by JS for consistent lightbox wiring -->
+</section>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox">
+  <button class="lightbox-nav prev" id="lb-prev" aria-label="ภาพก่อนหน้า">&#8249;</button>
+  <div class="lightbox-card">
+    <button class="lightbox-close" id="lb-close" aria-label="ปิด">&times;</button>
+    <img id="lb-img" src="" alt="Large View">
+    <div class="lightbox-caption">© 2023-2026</div>
+  </div>
+  <button class="lightbox-nav next" id="lb-next" aria-label="ภาพถัดไป">&#8250;</button>
+</div>
+
+<!-- BACK TO TOP -->
+<button type="button" id="btn-back-to-top" aria-label="กลับขึ้นด้านบน">&#8593;</button>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <p class="farewell">"Thank you my friend! It was very nice moment. Thank you for your time. GoodBye!"</p>
+  <p class="signed">— Phasit Pongpisansakul</p>
+  <ul class="foot-links">
+    <li><a href="https://rittichai28.github.io/index.html">Home</a></li>
+    <li><a href="https://rittichai28.github.io/index2.html">About</a></li>
+  </ul>
+  <p class="copyright">Copyright © 2023-2026 All Rights Reserved.</p>
+  <p class="copyright">This website and its entire contents, including but not limited to text, graphics, images, logos, icons, software, and the design, selection, and arrangement thereof, are protected by copyright and other intellectual property laws. Unauthorized reproduction, distribution, transmission, display, or use of any material from this website, in whole or in part, without the prior written consent of the copyright owner is strictly prohibited and may result in civil and criminal penalties.</p>
+</footer>
 
 <script>
-   const backToTopBtn = document.querySelector("#btn-back-to-top");
+  // ---------- Hero carousel ----------
+  const slides = Array.from(document.querySelectorAll('.hero-slide'));
+  const dots = Array.from(document.querySelectorAll('.hero-dots button'));
+  let current = 0;
+  let heroTimer;
 
-window.addEventListener("scroll", () => {
-
-  if (window.scrollY > 300) {
-    backToTopBtn.classList.add("show");
-  } else {
-    backToTopBtn.classList.remove("show");
+  function showSlide(i){
+    slides[current].classList.remove('active');
+    dots[current].classList.remove('active');
+    current = (i + slides.length) % slides.length;
+    slides[current].classList.add('active');
+    dots[current].classList.add('active');
   }
-});
+  function nextSlide(){ showSlide(current + 1); }
+  function prevSlide(){ showSlide(current - 1); }
+  function startAutoplay(){
+    clearInterval(heroTimer);
+    heroTimer = setInterval(nextSlide, 5000);
+  }
+  document.querySelector('.hero-arrow.next').addEventListener('click', () => { nextSlide(); startAutoplay(); });
+  document.querySelector('.hero-arrow.prev').addEventListener('click', () => { prevSlide(); startAutoplay(); });
+  dots.forEach(d => d.addEventListener('click', () => { showSlide(parseInt(d.dataset.go)); startAutoplay(); }));
+  startAutoplay();
 
-backToTopBtn.addEventListener("click", () => {
-  window.scrollTo({
-    top: 0,
-    behavior: "smooth"
+  // ---------- Gallery data ----------
+  const photos = [
+    { src: "./Gallery_files/img1.JPG", label: "Image 1", size: "" },
+    { src: "./Gallery_files/img2.JPG", label: "Image 2", size: "" },
+    { src: "./Gallery_files/img3.JPG", label: "Image 3", size: "" },
+    { src: "./Gallery_files/img4.JPEG", label: "Image 4", size: "" },
+    { src: "./Gallery_files/img5.JPEG", label: "Image 5", size: "" },
+    { src: "./Gallery_files/img6.jpg", label: "Image 6", size: "" },
+    { src: "./Gallery_files/img7.jpg", label: "Image 7", size: "" },
+    { src: "./Gallery_files/img8.jpg", label: "Image 8", size: "" },
+    { src: "./Gallery_files/img9.jpg", label: "Image 9", size: "" },
+    { src: "./Gallery_files/img10.jpg", label: "Image 10", size: "" },
+    { src: "./Gallery_files/img11.jpg", label: "Image 11", size: "" },
+    { src: "./Gallery_files/img12.jpg", label: "Image 12", size: "" },
+    { src: "./Gallery_files/img14.jpg", label: "Image 14", size: "" },
+    { src: "./Gallery_files/img15.jpg", label: "Image 15", size: "" },
+  ];
+
+  const grid = document.getElementById('gallery');
+  photos.forEach((p, i) => {
+    const tile = document.createElement('div');
+    tile.className = 'g-tile' + (p.size ? ' ' + p.size : '');
+    tile.setAttribute('role', 'button');
+    tile.setAttribute('tabindex', '0');
+    tile.dataset.index = i;
+    tile.innerHTML = `
+      <img src="${p.src}" alt="${p.label}" loading="lazy">
+      <div class="g-tile-scrim"></div>
+      <div class="g-tile-label">${p.label}</div>
+    `;
+    grid.appendChild(tile);
   });
-});
+
+  // mouse-follow glow on tiles
+  document.querySelectorAll('.g-tile').forEach(tile => {
+    tile.addEventListener('mousemove', e => {
+      const r = tile.getBoundingClientRect();
+      tile.style.setProperty('--mx', (e.clientX - r.left) + 'px');
+      tile.style.setProperty('--my', (e.clientY - r.top) + 'px');
+    });
+  });
+
+  // ---------- Lightbox ----------
+  const lightbox = document.getElementById('lightbox');
+  const lbImg = document.getElementById('lb-img');
+  let lbIndex = 0;
+
+  function openLightbox(i){
+    lbIndex = i;
+    lbImg.src = photos[i].src;
+    lbImg.alt = photos[i].label;
+    lightbox.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeLightbox(){
+    lightbox.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  function lbNext(){ lbIndex = (lbIndex + 1) % photos.length; lbImg.src = photos[lbIndex].src; lbImg.alt = photos[lbIndex].label; }
+  function lbPrev(){ lbIndex = (lbIndex - 1 + photos.length) % photos.length; lbImg.src = photos[lbIndex].src; lbImg.alt = photos[lbIndex].label; }
+
+  grid.addEventListener('click', e => {
+    const tile = e.target.closest('.g-tile');
+    if(tile) openLightbox(parseInt(tile.dataset.index));
+  });
+  grid.addEventListener('keydown', e => {
+    if((e.key === 'Enter' || e.key === ' ') && e.target.classList.contains('g-tile')){
+      e.preventDefault();
+      openLightbox(parseInt(e.target.dataset.index));
+    }
+  });
+
+  document.getElementById('lb-close').addEventListener('click', closeLightbox);
+  document.getElementById('lb-next').addEventListener('click', lbNext);
+  document.getElementById('lb-prev').addEventListener('click', lbPrev);
+  lightbox.addEventListener('click', e => { if(e.target === lightbox) closeLightbox(); });
+  document.addEventListener('keydown', e => {
+    if(!lightbox.classList.contains('open')) return;
+    if(e.key === 'Escape') closeLightbox();
+    if(e.key === 'ArrowRight') lbNext();
+    if(e.key === 'ArrowLeft') lbPrev();
+  });
+
+  // ---------- Back to top ----------
+  const backToTopBtn = document.querySelector("#btn-back-to-top");
+  window.addEventListener("scroll", () => {
+    backToTopBtn.classList.toggle("show", window.scrollY > 300);
+  });
+  backToTopBtn.addEventListener("click", () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
 </script>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
-<footer>
-    <h5 class="text-center" style="font-style: italic; padding: 60px;">"Thank you my friend! It was very nice moment Thank you for your time. GoodBye!"</h5>
-    <p class="text-end" style="font-style: italic; padding: 60px;">Phasit Pongpisansakul</p>
-    <div class="container">
-        <footer class="py-3 my-4">
-            <ul class="nav justify-content-center border-bottom pb-3 mb-3">
-                <li class="nav-item">
-                    <a href="index.html" class="nav-link px-2 text-body-secondary">Home</a></li>
-                <li class="nav-item">
-                    <a href="index2.html" class="nav-link px-2 text-body-secondary">About</a>
-                    <div class="form-check form-switch m-3">
-                </li>
-            </ul>
-    <p>Copyright © 2023-2026 All Rights Reserved.</p>
-</footer> 
-</div>
 </html>

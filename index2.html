@@ -1,580 +1,763 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="th">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;1,9..144,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --bg-0:#070b14;
+    --bg-1:#0a0f1d;
+    --bg-2:#0d1426;
+    --glow-1:#3b82f6;
+    --glow-2:#60a5fa;
+    --glow-3:#1d4ed8;
+    --glass-fill:rgba(255,255,255,0.055);
+    --glass-fill-hover:rgba(255,255,255,0.09);
+    --glass-border:rgba(255,255,255,0.14);
+    --text-hi:#f3f5f9;
+    --text-mid:rgba(243,245,249,0.72);
+    --text-low:rgba(243,245,249,0.45);
+    --scrim-soft:rgba(7,11,20,0);
+    --scrim-strong:rgba(5,7,14,0.88);
+    --radius-lg:28px;
+    --radius-md:20px;
+    --radius-sm:14px;
+  }
+
+  [data-theme="light"]{
+    --bg-0:#eef3fb;
+    --bg-1:#f5f8fd;
+    --bg-2:#ffffff;
+    --glow-1:#3b82f6;
+    --glow-2:#60a5fa;
+    --glow-3:#1d4ed8;
+    --glass-fill:rgba(255,255,255,0.65);
+    --glass-fill-hover:rgba(255,255,255,0.85);
+    --glass-border:rgba(37,99,235,0.16);
+    --text-hi:#0f1b30;
+    --text-mid:rgba(15,27,48,0.68);
+    --text-low:rgba(15,27,48,0.45);
+    --scrim-soft:rgba(238,243,251,0);
+    --scrim-strong:rgba(10,20,40,0.55);
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+
+  body{
+    margin:0;
+    background:
+      radial-gradient(ellipse 80% 50% at 15% -10%, color-mix(in srgb, var(--glow-1) 14%, transparent), transparent),
+      radial-gradient(ellipse 70% 50% at 100% 15%, color-mix(in srgb, var(--glow-2) 12%, transparent), transparent),
+      radial-gradient(ellipse 60% 40% at 50% 100%, color-mix(in srgb, var(--glow-3) 10%, transparent), transparent),
+      linear-gradient(180deg, var(--bg-0), var(--bg-1) 40%, var(--bg-2));
+    color:var(--text-hi);
+    font-family:'Inter', -apple-system, sans-serif;
+    font-weight:400;
+    -webkit-font-smoothing:antialiased;
+    min-height:100vh;
+    overflow-x:hidden;
+    transition:background .5s ease, color .4s ease;
+  }
+
+  .orb{
+    position:fixed;
+    border-radius:50%;
+    filter:blur(70px);
+    opacity:0.30;
+    pointer-events:none;
+    z-index:0;
+  }
+  [data-theme="light"] .orb{opacity:0.18;}
+  .orb-1{width:420px;height:420px;background:var(--glow-2);top:-120px;left:-100px;animation:drift1 22s ease-in-out infinite;}
+  .orb-2{width:480px;height:480px;background:var(--glow-1);top:30%;right:-160px;animation:drift2 26s ease-in-out infinite;}
+  .orb-3{width:360px;height:360px;background:var(--glow-3);bottom:-140px;left:30%;animation:drift3 28s ease-in-out infinite;}
+
+  @keyframes drift1{0%,100%{transform:translate(0,0);}50%{transform:translate(60px,40px);}}
+  @keyframes drift2{0%,100%{transform:translate(0,0);}50%{transform:translate(-50px,60px);}}
+  @keyframes drift3{0%,100%{transform:translate(0,0);}50%{transform:translate(40px,-50px);}}
+
+  @media (prefers-reduced-motion: reduce){
+    .orb{animation:none !important;}
+    *{transition-duration:0.01ms !important; animation-duration:0.01ms !important;}
+  }
+
+  a{color:inherit; text-decoration:none;}
+
+  /* ---------- NAV ---------- */
+  .glass-nav{
+    position:sticky;
+    top:0;
+    z-index:50;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:14px;
+    padding:18px 24px;
+    backdrop-filter:blur(20px) saturate(150%);
+    -webkit-backdrop-filter:blur(20px) saturate(150%);
+    background:color-mix(in srgb, var(--bg-0) 55%, transparent);
+    border-bottom:1px solid var(--glass-border);
+  }
+  .nav-pill-group{
+    display:flex;
+    gap:6px;
+    padding:6px;
+    border-radius:999px;
+    background:var(--glass-fill);
+    border:1px solid var(--glass-border);
+  }
+  .nav-pill-group a{
+    padding:9px 22px;
+    border-radius:999px;
+    font-size:14px;
+    letter-spacing:0.02em;
+    color:var(--text-mid);
+    transition:all .25s ease;
+  }
+  .nav-pill-group a.active{
+    background:linear-gradient(135deg, color-mix(in srgb, var(--glow-1) 30%, transparent), color-mix(in srgb, var(--glow-2) 30%, transparent));
+    color:var(--text-hi);
+    box-shadow:0 0 18px color-mix(in srgb, var(--glow-1) 30%, transparent), inset 0 0 0 1px var(--glass-border);
+  }
+  .nav-pill-group a:not(.active):hover{
+    color:var(--text-hi);
+    background:color-mix(in srgb, var(--text-hi) 6%, transparent);
+  }
+
+  /* ---------- THEME TOGGLE ---------- */
+  .theme-toggle{
+    position:relative;
+    width:54px; height:30px;
+    border-radius:999px;
+    border:1px solid var(--glass-border);
+    background:var(--glass-fill);
+    cursor:pointer;
+    flex-shrink:0;
+    transition:background .3s ease, border-color .3s ease;
+  }
+  .theme-toggle .knob{
+    position:absolute;
+    top:3px; left:3px;
+    width:22px; height:22px;
+    border-radius:50%;
+    background:linear-gradient(135deg, var(--glow-2), var(--glow-1));
+    box-shadow:0 0 10px color-mix(in srgb, var(--glow-1) 50%, transparent);
+    transition:transform .35s cubic-bezier(.2,.8,.2,1);
+    display:flex; align-items:center; justify-content:center;
+    font-size:12px;
+  }
+  [data-theme="light"] .theme-toggle .knob{transform:translateX(24px);}
+
+  /* ---------- PAGE HEAD ---------- */
+  .section-head{
+    max-width:1100px;
+    margin:64px auto 36px;
+    padding:0 24px;
+    text-align:center;
+    position:relative;
+    z-index:1;
+    animation:smoothFadeUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+  .section-head .eyebrow{
+    font-size:12px;
+    letter-spacing:0.18em;
+    text-transform:uppercase;
+    color:var(--text-low);
+  }
+  .section-head h1{
+    font-family:'Fraunces', serif;
+    font-weight:500;
+    font-style:italic;
+    font-size:clamp(28px, 4vw, 42px);
+    margin:8px 0 0;
+    background:linear-gradient(135deg, var(--text-hi), var(--glow-2) 65%, var(--glow-1));
+    -webkit-background-clip:text;
+    background-clip:text;
+    -webkit-text-fill-color:transparent;
+  }
+
+  /* ---------- PEOPLE GRID ---------- */
+  .people-grid{
+    max-width:1100px;
+    margin:0 auto;
+    padding:0 24px 40px;
+    display:grid;
+    grid-template-columns:repeat(2, 1fr);
+    gap:22px;
+    position:relative;
+    z-index:1;
+  }
+  .p-card{
+    position:relative;
+    border-radius:var(--radius-lg);
+    overflow:hidden;
+    cursor:pointer;
+    border:1px solid var(--glass-border);
+    background:var(--glass-fill);
+    height:520px;
+    isolation:isolate;
+    
+    /* เพิ่มแอนิเมชันตอนโหลดหน้าเว็บ */
+    opacity: 0;
+    transform: translateY(24px);
+    animation: smoothFadeUp 1s cubic-bezier(0.16, 1, 0.3, 1) both;
+    transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), 
+                box-shadow 0.5s cubic-bezier(0.16, 1, 0.3, 1), 
+                border-color 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .p-card img{
+    width:100%; height:100%;
+    object-fit:cover;
+    display:block;
+    transition:transform .6s cubic-bezier(.2,.8,.2,1);
+  }
+  .p-card::before{
+    content:'';
+    position:absolute;
+    inset:0;
+    background:radial-gradient(circle 240px at var(--mx,50%) var(--my,50%), rgba(255,255,255,0.20), transparent 60%);
+    opacity:0;
+    transition:opacity .35s ease;
+    z-index:2;
+    mix-blend-mode:overlay;
+    pointer-events:none;
+  }
+  .p-card:hover::before{opacity:1;}
+  .p-card:hover img{transform:scale(1.06);}
+  .p-card:hover{
+    box-shadow:0 18px 44px -14px rgba(0,0,0,0.5), 0 0 32px color-mix(in srgb, var(--glow-1) 26%, transparent);
+    border-color:color-mix(in srgb, var(--glow-2) 40%, var(--glass-border));
+  }
+  .p-card-scrim{
+    position:absolute;
+    inset:0;
+    background:linear-gradient(180deg, rgba(0,0,0,0) 35%, rgba(4,6,12,0.92) 100%);
+    z-index:1;
+  }
+  .p-card-info{
+    position:absolute;
+    left:0; right:0; bottom:0;
+    padding:26px 28px;
+    z-index:2;
+  }
+  .p-card-info h3{
+    font-family:'Fraunces', serif;
+    font-weight:600;
+    font-size:24px;
+    margin:0 0 4px;
+    color:#f3f5f9;
+    text-shadow:0 2px 14px rgba(0,0,0,0.4);
+  }
+  .p-card-info p{
+    margin:0;
+    font-size:13px;
+    color:rgba(243,245,249,0.75);
+    letter-spacing:0.02em;
+  }
+
+  @media (max-width:760px){
+    .people-grid{grid-template-columns:1fr; gap:16px;}
+    .p-card{height:440px;}
+  }
+
+  /* ---------- DETAIL MODAL ---------- */
+  .pmodal{
+    position:fixed;
+    inset:0;
+    z-index:200;
+    display:none;
+    align-items:center;
+    justify-content:center;
+    background:rgba(4,6,12,0.82);
+    backdrop-filter:blur(14px) saturate(140%);
+    -webkit-backdrop-filter:blur(14px) saturate(140%);
+    padding:24px;
+    
+    /* นำมาใช้ควบคุมการ Fade-in/out */
+    opacity: 0;
+    transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  [data-theme="light"] .pmodal{background:rgba(10,18,32,0.6);}
+  .pmodal.open{
+    display:flex;
+    opacity: 1;
+  }
+  .pmodal-card{
+    position:relative;
+    width:min(960px, 94vw);
+    max-height:88vh;
+    overflow:auto;
+    border-radius:26px;
+    border:1px solid var(--glass-border);
+    background:color-mix(in srgb, var(--bg-2) 88%, transparent);
+    backdrop-filter:blur(24px) saturate(160%);
+    box-shadow:0 40px 100px -20px rgba(0,0,0,0.6), 0 0 80px color-mix(in srgb, var(--glow-1) 16%, transparent);
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    
+    /* ปรับแต่งจังหวะเลื่อนโผล่ให้นุ่มนวลแบบมินิมอล */
+    transform: scale(0.96) translateY(16px);
+    transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .pmodal.open .pmodal-card{
+    transform: scale(1) translateY(0);
+  }
+  .pmodal-img{
+    position:relative;
+    min-height:340px;
+    overflow:hidden;
+  }
+  .pmodal-img img{
+    width:100%; height:100%;
+    object-fit:cover;
+    display:block;
+  }
+  .pmodal-body{
+    padding:48px 44px;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+  }
+  .pmodal-body h2{
+    font-family:'Fraunces', serif;
+    font-weight:600;
+    font-size:clamp(28px, 3.4vw, 38px);
+    margin:0 0 6px;
+    color:var(--text-hi);
+  }
+  .pmodal-body h5{
+    font-weight:500;
+    font-size:15px;
+    color:var(--text-mid);
+    margin:0 0 22px;
+  }
+  .pmodal-body blockquote{
+    font-family:'Fraunces', serif;
+    font-style:italic;
+    font-size:clamp(17px, 2vw, 21px);
+    line-height:1.55;
+    color:var(--text-hi);
+    margin:0 0 14px;
+    border-left:2px solid color-mix(in srgb, var(--glow-2) 50%, transparent);
+    padding-left:18px;
+  }
+  .pmodal-body .said-when{
+    text-align:right;
+    font-size:13px;
+    color:var(--text-low);
+    margin:0 0 20px;
+  }
+  .pmodal-body hr{
+    border:none;
+    border-top:1px solid var(--glass-border);
+    margin:0 0 24px;
+    width:64px;
+  }
+  .pmodal-close-btn{
+    align-self:flex-end;
+    padding:10px 22px;
+    border-radius:999px;
+    border:1px solid var(--glass-border);
+    background:var(--glass-fill);
+    color:var(--text-hi);
+    font-size:13px;
+    letter-spacing:0.03em;
+    cursor:pointer;
+    transition:all .25s ease;
+  }
+  .pmodal-close-btn:hover{
+    background:linear-gradient(135deg, color-mix(in srgb, var(--glow-1) 25%, transparent), color-mix(in srgb, var(--glow-2) 25%, transparent));
+    box-shadow:0 0 16px color-mix(in srgb, var(--glow-1) 30%, transparent);
+  }
+  .pmodal-x{
+    position:absolute;
+    top:16px; right:16px;
+    width:38px; height:38px;
+    border-radius:50%;
+    border:1px solid rgba(255,255,255,0.25);
+    background:rgba(7,11,20,0.5);
+    backdrop-filter:blur(10px);
+    color:#fff;
+    font-size:18px;
+    display:flex; align-items:center; justify-content:center;
+    cursor:pointer;
+    z-index:3;
+    transition:all .25s ease;
+  }
+  .pmodal-x:hover{background:rgba(255,255,255,0.2);}
+
+  @media (max-width:760px){
+    .pmodal-card{grid-template-columns:1fr;}
+    .pmodal-img{min-height:240px;}
+    .pmodal-body{padding:32px 26px;}
+  }
+
+  /* ---------- FAREWELL MESSAGES ---------- */
+  .farewell-block{
+    max-width:760px;
+    margin:0 auto;
+    padding:40px 24px;
+    text-align:center;
+    position:relative;
+    z-index:1;
+    animation:smoothFadeUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+  .farewell-block .msg{
+    font-family:'Fraunces', serif;
+    font-style:italic;
+    font-size:clamp(16px, 2vw, 20px);
+    line-height:1.75;
+    color:var(--text-mid);
+    margin:0 0 14px;
+  }
+  .farewell-block .from{
+    text-align:right;
+    font-style:italic;
+    font-family:'Fraunces', serif;
+    color:var(--text-low);
+    font-size:14px;
+    margin:0 0 8px;
+  }
+  .farewell-block .divider{
+    width:64px;
+    height:1px;
+    margin:36px auto;
+    background:var(--glass-border);
+  }
+  .the-end{
+    text-align:center;
+    font-family:'Fraunces', serif;
+    font-style:italic;
+    font-size:clamp(22px, 3vw, 30px);
+    color:var(--text-hi);
+    padding:30px 24px 10px;
+    position:relative;
+    z-index:1;
+    animation:smoothFadeUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+
+  /* ---------- BACK TO TOP ---------- */
+  #btn-back-to-top{
+    position:fixed;
+    bottom:28px; right:28px;
+    width:54px; height:54px;
+    border-radius:50%;
+    border:1px solid var(--glass-border);
+    background:var(--glass-fill);
+    backdrop-filter:blur(14px);
+    color:var(--text-hi);
+    font-size:18px;
+    display:flex; align-items:center; justify-content:center;
+    cursor:pointer;
+    z-index:90;
+    opacity:0; visibility:hidden;
+    transform:translateY(16px);
+    transition:all .35s ease;
+    box-shadow:0 8px 24px rgba(0,0,0,0.25);
+  }
+  #btn-back-to-top.show{opacity:1; visibility:visible; transform:translateY(0);}
+  #btn-back-to-top:hover{
+    background:linear-gradient(135deg, color-mix(in srgb, var(--glow-1) 30%, transparent), color-mix(in srgb, var(--glow-2) 30%, transparent));
+    box-shadow:0 0 22px color-mix(in srgb, var(--glow-1) 40%, transparent);
+    transform:translateY(-3px);
+  }
+
+  /* ---------- FOOTER ---------- */
+  footer.site-footer{
+    position:relative;
+    z-index:1;
+    margin-top:60px;
+    padding:48px 24px 40px;
+    text-align:center;
+    border-top:1px solid var(--glass-border);
+    background:linear-gradient(180deg, transparent, color-mix(in srgb, var(--bg-0) 30%, transparent));
+  }
+  footer.site-footer .foot-links{
+    display:flex;
+    justify-content:center;
+    gap:28px;
+    list-style:none;
+    padding:0 0 24px;
+    margin:0 0 24px;
+    border-bottom:1px solid var(--glass-border);
+  }
+  footer.site-footer .foot-links a{
+    font-size:13px;
+    letter-spacing:0.04em;
+    color:var(--text-low);
+    transition:color .2s ease;
+  }
+  footer.site-footer .foot-links a:hover{color:var(--text-hi);}
+  footer.site-footer .copyright{
+    font-size:12px;
+    color:var(--text-low);
+    letter-spacing:0.03em;
+  }
+  footer.site-footer .copyright a{
+    color:var(--text-mid);
+    text-decoration:underline;
+    text-decoration-color:var(--glass-border);
+  }
+
+  a:focus-visible, button:focus-visible{
+    outline:2px solid var(--glow-2);
+    outline-offset:2px;
+  }
+
+  /* คีย์เฟรมกลางสำหรับการ Fade Up */
+  @keyframes smoothFadeUp {
+    from {
+      opacity: 0;
+      transform: translateY(24px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+</style>
 </head>
-<header class="d-flex justify-content-center py-3 border-bottom">
-  <div class="container">
-    <ul class="nav nav-pills justify-content-center">
-      <li class="nav-item">
-        <a href="index.html" class="nav-link" aria-current="page">Home</a>
-      </li>
-      <li class="nav-item">
-        <a href="index2.html" class="nav-link active" aria-current="page">About</a>
-      </li>
-    </ul>
-  </div>
+<body>
+
+<div class="orb orb-1" aria-hidden="true"></div>
+<div class="orb orb-2" aria-hidden="true"></div>
+<div class="orb orb-3" aria-hidden="true"></div>
+
+<header class="glass-nav">
+  <nav class="nav-pill-group">
+    <a href="https://rittichai28.github.io/index.html">Home</a>
+    <a href="https://rittichai28.github.io/index2.html" class="active" aria-current="page">About</a>
+  </nav>
+  <button class="theme-toggle" id="theme-toggle" aria-label="สลับธีมสว่าง/มืด" title="สลับธีมสว่าง/มืด">
+    <span class="knob" id="theme-knob">🌙</span>
+  </button>
 </header>
-<style>
 
-  .card {
-      transition: transform 0.2s;
-  }
-  .card:hover {
-     transform: translateY(-5px);
-      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-  }
-</style>
+<div class="section-head">
 
-<div class="container py-5" style="max-width: 1100px;"> 
-  <div class="row g-4">
-    <div class="col-md-6">
-      <div class="card border-0 shadow-lg" style="border-radius: 20px; overflow: hidden; cursor: zoom-in;" 
-           data-bs-toggle="modal" data-bs-target="#modalBox1">
-        <img src="IMG/about 2.jpg" 
-             class="card-img"  style="height: 650px; object-fit: cover;">
-        <div class="card-img-overlay d-flex flex-column justify-content-end p-4" 
-             style="background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);">
-          <h3 class="text-white fw-bold">Fifa</h3>
-          <p class="text-white">Phasit Pongpisansakul</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-md-6">
-      <div class="card border-0 shadow-lg" style="border-radius: 20px; overflow: hidden; cursor: zoom-in;" 
-           data-bs-toggle="modal" data-bs-target="#modalBox2">
-        <img src="IMG/about 3.jpg" 
-             class="card-img"  style="height: 650px; object-fit: cover;">
-        <div class="card-img-overlay d-flex flex-column justify-content-end p-4" 
-             style="background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);">
-          <h3 class="text-white fw-bold">Show</h3>
-          <p class="text-white">Pongsathorn Siriboon</p>
-        </div>
-      </div>
-    </div>
-    <div class="col-md-6">
-      <div class="card border-0 shadow-lg" style="border-radius: 20px; overflow: hidden; cursor: zoom-in;" 
-           data-bs-toggle="modal" data-bs-target="#modalBox3">
-        <img src="IMG/about 4.jpg" 
-             class="card-img"  style="height: 650px; object-fit: cover;">
-        <div class="card-img-overlay d-flex flex-column justify-content-end p-4" 
-             style="background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);">
-          <h3 class="text-white fw-bold">Than</h3>
-          <p class="text-white">Rittichai Mangsoongnoen</p>
-        </div>
-      </div>
-    </div>
-        <div class="col-md-6">
-      <div class="card border-0 shadow-lg" style="border-radius: 20px; overflow: hidden; cursor: zoom-in;" 
-           data-bs-toggle="modal" data-bs-target="#modalBox4">
-        <img src="IMG/about 5.jpg" 
-             class="card-img"  style="height: 650px; object-fit: cover;">
-        <div class="card-img-overlay d-flex flex-column justify-content-end p-4" 
-             style="background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);">
-          <h3 class="text-white fw-bold">Keng</h3>
-          <p class="text-white">ding_hahain</p>
-        </div>
-      </div>
-    </div>
-        <div class="col-md-6">
-      <div class="card border-0 shadow-lg" style="border-radius: 20px; overflow: hidden; cursor: zoom-in;" 
-           data-bs-toggle="modal" data-bs-target="#modalBox5">
-        <img src="IMG/about 6.jpg" 
-             class="card-img"  style="height: 650px; object-fit: cover;">
-        <div class="card-img-overlay d-flex flex-column justify-content-end p-4" 
-             style="background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);">
-          <h3 class="text-white fw-bold">Bus</h3>
-          <p class="text-white">Koramin Thammaphilukkul</p>
-        </div>
-      </div>
-    </div>
-        <div class="col-md-6">
-      <div class="card border-0 shadow-lg" style="border-radius: 20px; overflow: hidden; cursor: zoom-in;" 
-           data-bs-toggle="modal" data-bs-target="#modalBox6">
-        <img src="IMG/about 9.jpg" 
-             class="card-img"  style="height: 650px; object-fit: cover;">
-        <div class="card-img-overlay d-flex flex-column justify-content-end p-4" 
-             style="background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);">
-          <h3 class="text-white fw-bold">Assassin X</h3>
-          <p class="text-white"></p>
-        </div>
-      </div>
-    </div>
-    <div class="col-md-6">
-      <div class="card border-0 shadow-lg" style="border-radius: 20px; overflow: hidden; cursor: zoom-in;" 
-           data-bs-toggle="modal" data-bs-target="#modalBox7">
-        <img src="IMG/about 10.jpg" 
-             class="card-img"  style="height: 650px; object-fit: cover;">
-        <div class="card-img-overlay d-flex flex-column justify-content-end p-4" 
-             style="background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);">
-          <h3 class="text-white fw-bold">Manu</h3>
-          <p class="text-white">Chatchai Dechkung</p>
-        </div>
-      </div>
-    </div>
-    <div class="col-md-6">
-      <div class="card border-0 shadow-lg" style="border-radius: 20px; overflow: hidden; cursor: zoom-in;" 
-           data-bs-toggle="modal" data-bs-target="#modalBox8">
-        <img src="IMG/about 12.jpg" 
-             class="card-img"  style="height: 650px; object-fit: cover;">
-        <div class="card-img-overlay d-flex flex-column justify-content-end p-4" 
-             style="background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);">
-          <h3 class="text-white fw-bold">Cap</h3>
-          <p class="text-white"></p>
-        </div>
-      </div>
-    </div>
-        <div class="col-md-6">
-      <div class="card border-0 shadow-lg" style="border-radius: 20px; overflow: hidden; cursor: zoom-in;" 
-           data-bs-toggle="modal" data-bs-target="#modalBox9">
-        <img src="IMG/about 13.jpg" 
-             class="card-img"  style="height: 650px; object-fit: cover;">
-        <div class="card-img-overlay d-flex flex-column justify-content-end p-4" 
-             style="background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);">
-          <h3 class="text-white fw-bold">Zoom</h3>
-          <p class="text-white">Ratsarun Chongrakdee</p>
-        </div>
-      </div>
-    </div>
-  <div class="col-md-6">
-      <div class="card border-0 shadow-lg" style="border-radius: 20px; overflow: hidden; cursor: zoom-in;" 
-           data-bs-toggle="modal" data-bs-target="#modalBox10">
-        <img src="IMG/about 15.jpg" 
-             class="card-img"  style="height: 650px; object-fit: cover;">
-        <div class="card-img-overlay d-flex flex-column justify-content-end p-4" 
-             style="background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);">
-          <h3 class="text-white fw-bold">Ken</h3>
-          <p class="text-white">Mahasajun Jamjun</p>
-        </div>
-      </div>
-    </div>
-      <div class="col-md-6">
-      <div class="card border-0 shadow-lg" style="border-radius: 20px; overflow: hidden; cursor: zoom-in;" 
-           data-bs-toggle="modal" data-bs-target="#modalBox11">
-        <img src="IMG/about 35.jpg" 
-             class="card-img"  style="height: 650px; object-fit: cover;">
-        <div class="card-img-overlay d-flex flex-column justify-content-end p-4" 
-             style="background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);">
-          <h3 class="text-white fw-bold">Yindee</h3>
-          <p class="text-white">Ranchida Sanukit</p>
-        </div>
-      </div>
-    </div>
-<!--End-->
-  </div>
 </div>
-<!-- ขยายรูปภาพ-->
 
-<div class="modal fade" id="modalBox1" tabindex="-1" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered modal-xl"> 
-    <div class="modal-content border-0 bg-white shadow-lg" style="border-radius: 20px; overflow: hidden;">
-      
-      <div class="modal-body p-0">
-        <div class="row g-0 align-items-center"> 
-          <div class="col-lg-5 position-relative">
-            <div class="ratio ratio-4x5 h-100" style="min-height: 600px;">
-              <img src="IMG/about 2.jpg" 
-                   class="img-fluid object-fit-cover">
-            </div>
-            </div>
+<section class="people-grid" id="people"></section>
 
-          <div class="col-lg-6 p-5">
-            <h1 class="fw-bold mb-3 display-5">Fifa</h1>
-            <h5 class="fw-bold mb-3">Phasit Pongpisansakul</h5>
-            <p class="text-muted fs-3 mb-0" style="font-style: italic;">"ช่วงเวลาที่เริ่มต้นผ่านไปเร็ว แต่ตอนนี้คงไม่มีอีกแล้ว."</p>
-            <p class="text-end" class="text-muted fs-8 mb-0">Said when 1 April 2026.</p>
-            <hr class="border-secondary my-4 w-25">
-            <div class="mt-5 text-end">
-                <button type="button" class="btn btn-dark px-4 py-2" data-bs-dismiss="modal" style="border-radius: 10px;">Close</button>
-             </div>
-          </div>
-        </div>
-      </div>
+<div class="pmodal" id="pmodal">
+  <div class="pmodal-card">
+    <button class="pmodal-x" id="pmodal-close-x" aria-label="ปิด">&times;</button>
+    <div class="pmodal-img"><img id="pmodal-img" src="" alt=""></div>
+    <div class="pmodal-body">
+      <h2 id="pmodal-name"></h2>
+      <h5 id="pmodal-fullname"></h5>
+      <blockquote id="pmodal-quote"></blockquote>
+      <p class="said-when" id="pmodal-date"></p>
+      <hr>
+      <button class="pmodal-close-btn" id="pmodal-close-btn">Close</button>
     </div>
   </div>
 </div>
 
-<div class="modal fade" id="modalBox2" tabindex="-1" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered modal-xl"> 
-    <div class="modal-content border-0 bg-white shadow-lg" style="border-radius: 20px; overflow: hidden;">
-      
-      <div class="modal-body p-0">
-        <div class="row g-0 align-items-center"> 
-          <div class="col-lg-5 position-relative">
-            <div class="ratio ratio-4x5 h-100" style="min-height: 600px;">
-              <img src="IMG/about 3.jpg" 
-                   class="img-fluid object-fit-cover">
-            </div>
-            </div>
-
-          <div class="col-lg-6 p-5">
-            <h1 class="fw-bold mb-3 display-5">Show</h1>
-            <h5 class="fw-bold mb-3">Pongsathorn Siriboon</h5>
-            <p class="text-muted fs-3 mb-0" style="font-style: italic;">"กำขี้ดีกว่ากำตด"</p>
-            <p class="text-end" class="text-muted fs-8 mb-0">Said when 1 April 2026.</p>
-            <hr class="border-secondary my-4 w-25">
-            <div class="mt-5 text-end">
-                <button type="button" class="btn btn-dark px-4 py-2" data-bs-dismiss="modal" style="border-radius: 10px;">Close</button>
-             </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+<div class="farewell-block">
+  <p class="msg">"กูเชื่อว่าพวกมึงต้องมาเปิดดู"</p>
+  <p class="from">— Rittichai Mangsoongnoen</p>
+  <div class="divider"></div>
+  <p class="msg">"ขอบคุณนะทุกคนสำหรับ 3 ปีที่อยู่ห้องเดียวกันและกลุ่มเดียวกันตลอดระยะเวลาที่ผ่านมา เรารู้สึกว่าพวกเราสนิทกันมากเลยตั้งแต่ ม.1 ถึงตอนนี้ ถึงจะเจออะไรที่เป็นอุปสรรคแต่พวกเราก็ผ่านมาได้ ตอนนี้เราอาจจะไม่ได้เจอกันในชีวิตจริงอีกแล้วสำหรับบางคน แต่บางคนก็อาจจะยังเจอแบบผ่านๆ ก็ขอให้ทุกคนโชคดีนะกับทางเลือกม.ปลายหรือปวช. goodluck ลาก่อนน้า"</p>
+  <div class="divider"></div>
+  <p class="msg">"ฮัลโหลห์ มายเฟรนด์เพื่อนยอดรัก นี่ก็ผ่านมาสามปีแล้ว ตอนแรกก็คิดว่าจะไม่มีเพื่อนสะอีก มาสนิทกันยังไงไม่รู้แต่ก็ดีใจมากที่ได้พวกมึงมาเป็นเพื่อนกัน อาจจะมีล้อชื่อพ่อชื่อแม่บ้าง ขอลอกการบ้านบ้าง แต่ก็ร้ากยกเว้นไอเคน เป็นไรไม่รู้ยั่วโมโหตลอดเลยอยากโดนวีนหรอจ้ะ หยอกๆนะ พอได้ฟิลขำๆตลกๆ ขอให้โชคดีกับสิ่งที่เลือกเดินเส้นทางของตัวเองนะ ถึงแม้จะอยู่คนละห้อง คนละสาย หรือคนละสถาบัน แต่จำไว้เลยนะว่ามันตัวซีเคร็ทอย่างกูคอยปรึกษา คอยให้พวกมึงปสด.ทุกวัน ยิ้มเยอะๆให้มีความสุข เจอสังคมใหม่ดีๆนะแม่นะ ชวนเล่นเซไกก็เล่นได้ เลิฟยูเอวี้วันมั้กๆ รักพวกมึงที่สุด"</p>
+  <p class="from">— A message sent from someone.</p>
 </div>
 
-<div class="modal fade" id="modalBox3" tabindex="-1" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered modal-xl"> 
-    <div class="modal-content border-0 bg-white shadow-lg" style="border-radius: 20px; overflow: hidden;">
-      
-      <div class="modal-body p-0">
-        <div class="row g-0 align-items-center"> 
-          <div class="col-lg-5 position-relative">
-            <div class="ratio ratio-4x5 h-100" style="min-height: 600px;">
-              <img src="IMG/about 4.jpg" 
-                   class="img-fluid object-fit-cover">
-            </div>
-            </div>
+<p class="the-end">The End.</p>
 
-          <div class="col-lg-6 p-5">
-            <h1 class="fw-bold mb-3 display-5">Than</h1>
-            <h5 class="fw-bold mb-3">Rittichai Mangsoongnoen</h5>
-            <p class="text-muted fs-3 mb-0" style="font-style: italic;">"ลืมไปว่าทุกวัน
-                                              อาจไม่ได้เจอเธอเหมือนเดิม
-                                              ลืมไปว่าฉันควรจะกอดเธอไว้
-                                              ลืมไปว่าชีวิตเปราะบางขนาดไหน"</p>
-            <p class="text-end" class="text-muted fs-8 mb-0">Said when 1 April 2026.</p>
-            <hr class="border-secondary my-4 w-25">
-            <div class="mt-5 text-end">
-                <button type="button" class="btn btn-dark px-4 py-2" data-bs-dismiss="modal" style="border-radius: 10px;">Close</button>
-             </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+<button type="button" id="btn-back-to-top" aria-label="กลับขึ้นด้านบน">&#8593;</button>
 
-<div class="modal fade" id="modalBox4" tabindex="-1" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered modal-xl"> 
-    <div class="modal-content border-0 bg-white shadow-lg" style="border-radius: 20px; overflow: hidden;">
-      
-      <div class="modal-body p-0">
-        <div class="row g-0 align-items-center"> 
-          <div class="col-lg-5 position-relative">
-            <div class="ratio ratio-4x5 h-100" style="min-height: 600px;">
-              <img src="IMG/about 5.jpg" 
-                   class="img-fluid object-fit-cover">
-            </div>
-            </div>
-
-          <div class="col-lg-6 p-5">
-            <h1 class="fw-bold mb-3 display-5">Keng</h1>
-            <h5 class="fw-bold mb-3">ding_hahain</h5>
-            <p class="text-muted fs-3 mb-0" style="font-style: italic;">"เขาก็เหมือนป้อม ถ้ารักษาไม่ได้ก็อย่าหวังกับความรัก"</p>
-            <p class="text-end" class="text-muted fs-8 mb-0">Said when 1 April 2026.</p>
-            <hr class="border-secondary my-4 w-25">
-            <div class="mt-5 text-end">
-                <button type="button" class="btn btn-dark px-4 py-2" data-bs-dismiss="modal" style="border-radius: 10px;">Close</button>
-             </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="modal fade" id="modalBox5" tabindex="-1" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered modal-xl"> 
-    <div class="modal-content border-0 bg-white shadow-lg" style="border-radius: 20px; overflow: hidden;">
-      
-      <div class="modal-body p-0">
-        <div class="row g-0 align-items-center"> 
-          <div class="col-lg-5 position-relative">
-            <div class="ratio ratio-4x5 h-100" style="min-height: 600px;">
-              <img src="IMG/about 6.jpg" 
-                   class="img-fluid object-fit-cover">
-            </div>
-            </div>
-
-          <div class="col-lg-6 p-5">
-            <h1 class="fw-bold mb-3 display-5">Bus</h1>
-            <h5 class="fw-bold mb-3">Koramin Thammaphilukkul</h5>
-            <p class="text-muted fs-3 mb-0" style="font-style: italic;">"เรียนจบแล้ว แต่ความรู้ยังโหลดไม่ครบ"</p>
-            <p class="text-end" class="text-muted fs-8 mb-0">Said when 1 April 2026.</p>
-            <hr class="border-secondary my-4 w-25">
-            <div class="mt-5 text-end">
-                <button type="button" class="btn btn-dark px-4 py-2" data-bs-dismiss="modal" style="border-radius: 10px;">Close</button>
-             </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="modal fade" id="modalBox6" tabindex="-1" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered modal-xl"> 
-    <div class="modal-content border-0 bg-white shadow-lg" style="border-radius: 20px; overflow: hidden;">
-      
-      <div class="modal-body p-0">
-        <div class="row g-0 align-items-center"> 
-          <div class="col-lg-5 position-relative">
-            <div class="ratio ratio-4x5 h-100" style="min-height: 600px;">
-              <img src="IMG/about 9.jpg" 
-                   class="img-fluid object-fit-cover">
-            </div>
-            </div>
-
-          <div class="col-lg-6 p-5">
-            <h1 class="fw-bold mb-3 display-5">Assassin X</h1>
-            <h5 class="fw-bold mb-3"></h5>
-            <p class="text-muted fs-3 mb-0" style="font-style: italic;">"อยู่กับเธอมันแย่ อยู่กับแม่ดีกว่า"</p>
-            <p class="text-end" class="text-muted fs-8 mb-0">Said when 1 April 2026.</p>
-            <hr class="border-secondary my-4 w-25">
-            <div class="mt-5 text-end">
-                <button type="button" class="btn btn-dark px-4 py-2" data-bs-dismiss="modal" style="border-radius: 10px;">Close</button>
-             </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="modal fade" id="modalBox7" tabindex="-1" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered modal-xl"> 
-    <div class="modal-content border-0 bg-white shadow-lg" style="border-radius: 20px; overflow: hidden;">
-      
-      <div class="modal-body p-0">
-        <div class="row g-0 align-items-center"> 
-          <div class="col-lg-5 position-relative">
-            <div class="ratio ratio-4x5 h-100" style="min-height: 600px;">
-              <img src="IMG/about 10.jpg" 
-                   class="img-fluid object-fit-cover">
-            </div>
-            </div>
-
-          <div class="col-lg-6 p-5">
-            <h1 class="fw-bold mb-3 display-5">Manu</h1>
-            <h5 class="fw-bold mb-3">Chatchai Dechkung</h5>
-            <p class="text-muted fs-3 mb-0" style="font-style: italic;">"ไม่มีอะไรเกิดขึ้นได้โดยปราศจากการเริ่มต้น"</p>
-            <p class="text-end" class="text-muted fs-8 mb-0">Said when 1 April 2026.</p>
-            <hr class="border-secondary my-4 w-25">
-            <div class="mt-5 text-end">
-                <button type="button" class="btn btn-dark px-4 py-2" data-bs-dismiss="modal" style="border-radius: 10px;">Close</button>
-             </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="modal fade" id="modalBox8" tabindex="-1" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered modal-xl"> 
-    <div class="modal-content border-0 bg-white shadow-lg" style="border-radius: 20px; overflow: hidden;">
-      
-      <div class="modal-body p-0">
-        <div class="row g-0 align-items-center"> 
-          <div class="col-lg-5 position-relative">
-            <div class="ratio ratio-4x5 h-100" style="min-height: 600px;">
-              <img src="IMG/about 12.jpg" 
-                   class="img-fluid object-fit-cover">
-            </div>
-            </div>
-
-          <div class="col-lg-6 p-5">
-            <h1 class="fw-bold mb-3 display-5">Cap</h1>
-            <h5 class="fw-bold mb-3"></h5>
-            <p class="text-muted fs-3 mb-0"style="font-style: italic;" >"you will never understand how it work until you understand yourself"</p>
-            <p class="text-end" class="text-muted fs-8 mb-0">Said when 2 April 2026.</p>
-            <hr class="border-secondary my-4 w-25">
-            <div class="mt-5 text-end">
-                <button type="button" class="btn btn-dark px-4 py-2" data-bs-dismiss="modal" style="border-radius: 10px;">Close</button>
-             </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="modal fade" id="modalBox9" tabindex="-1" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered modal-xl"> 
-    <div class="modal-content border-0 bg-white shadow-lg" style="border-radius: 20px; overflow: hidden;">
-      
-      <div class="modal-body p-0">
-        <div class="row g-0 align-items-center"> 
-          <div class="col-lg-5 position-relative">
-            <div class="ratio ratio-4x5 h-100" style="min-height: 600px;">
-              <img src="IMG/about 13.jpg" 
-                   class="img-fluid object-fit-cover">
-            </div>
-            </div>
-
-          <div class="col-lg-6 p-5">
-            <h1 class="fw-bold mb-3 display-5">Zoom</h1>
-            <h5 class="fw-bold mb-3">Ratsarun Chongrakdee</h5>
-            <p class="text-muted fs-3 mb-0" style="font-style: italic;">"ไม่ว่ายังไงกูก็ไม่เคยลืมคนที่ทำดีกับกู"</p>
-            <p class="text-end" class="text-muted fs-8 mb-0">Said when 1 April 2026.</p>
-            <hr class="border-secondary my-4 w-25">
-            <div class="mt-5 text-end">
-                <button type="button" class="btn btn-dark px-4 py-2" data-bs-dismiss="modal" style="border-radius: 10px;">Close</button>
-             </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="modal fade" id="modalBox10" tabindex="-1" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered modal-xl"> 
-    <div class="modal-content border-0 bg-white shadow-lg" style="border-radius: 20px; overflow: hidden;">
-      
-      <div class="modal-body p-0">
-        <div class="row g-0 align-items-center"> 
-          <div class="col-lg-5 position-relative">
-            <div class="ratio ratio-4x5 h-100" style="min-height: 600px;">
-              <img src="IMG/about 15.jpg" 
-                   class="img-fluid object-fit-cover">
-            </div>
-            </div>
-
-          <div class="col-lg-6 p-5">
-            <h1 class="fw-bold mb-3 display-5">Ken</h1>
-            <h5 class="fw-bold mb-3">Mahasajun Jamjun </h5>
-            <p class="text-muted fs-3 mb-0" style="font-style: italic;">"ถ้าไม่เชื่อในตัวเอง ลองเชื่อในสิ่งที่ทำที่เชื่อในตัวเองดูสิ"</p>
-            <p class="text-end" class="text-muted fs-8 mb-0">Said when 2 April 2026.</p>
-            <hr class="border-secondary my-4 w-25">
-            <div class="mt-5 text-end">
-                <button type="button" class="btn btn-dark px-4 py-2" data-bs-dismiss="modal" style="border-radius: 10px;">Close</button>
-             </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="modal fade" id="modalBox11" tabindex="-1" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered modal-xl"> 
-    <div class="modal-content border-0 bg-white shadow-lg" style="border-radius: 20px; overflow: hidden;">
-      
-      <div class="modal-body p-0">
-        <div class="row g-0 align-items-center"> 
-          <div class="col-lg-5 position-relative">
-            <div class="ratio ratio-4x5 h-100" style="min-height: 600px;">
-              <img src="IMG/about 35.jpg" 
-                   class="img-fluid object-fit-cover">
-            </div>
-            </div>
-
-          <div class="col-lg-6 p-5">
-            <h1 class="fw-bold mb-3 display-5">Yindee</h1>
-            <h5 class="fw-bold mb-3">Ranchida Sanukit</h5>
-            <p class="text-muted fs-3 mb-0" style="font-style: italic;">"ซีเคร็ตก็อยู่นี่ไง จะเบียวอาวีเนอะเพื่อนห์ๆ"</p>
-            <p class="text-end" class="text-muted fs-8 mb-0">Said when 2 April 2026.</p>
-            <hr class="border-secondary my-4 w-25">
-            <div class="mt-5 text-end">
-                <button type="button" class="btn btn-dark px-4 py-2" data-bs-dismiss="modal" style="border-radius: 10px;">Close</button>
-             </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- Footer -->
- <button type="button" id="btn-back-to-top" class="btn btn-primary">
-  <i class="fas fa-arrow-up"></i> ↑
-</button>
-<style>
-#btn-back-to-top {
-  position: fixed;
-  bottom: 30px;
-  right: 30px;
-  width: 70px;
-  height: 70px;
-  border-radius: 100%;
-  z-index: 1000;
-  font-size: 25px;
-
-  opacity: 0;
-  visibility: hidden;
-  transition: all 0.4s ease-in-out;
-  
-  border: none;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-#btn-back-to-top.show {
-  opacity: 1;
-  visibility: visible;
-  transform: translateY(0);
-}
-
-
-#btn-back-to-top:not(.show) {
-  transform: translateY(20px);
-}
-
-#btn-back-to-top:hover {
-  transform: translateY(-5px) !important; 
-  background-color: #0056b3;
-}
-
-</style>
+<footer class="site-footer">
+  <ul class="foot-links">
+    <li><a href="https://rittichai28.github.io/index.html">Home</a></li>
+    <li><a href="https://rittichai28.github.io/index2.html">About</a></li>
+  </ul>
+  <p class="copyright">Copyright © 2023-2026 All Rights Reserved.</p>
+  <p class="copyright">This website and its entire contents, including but not limited to text, graphics, images, logos, icons, software, and the design, selection, and arrangement thereof, are protected by copyright and other intellectual property laws. Unauthorized reproduction, distribution, transmission, display, or use of any material from this website, in whole or in part, without the prior written consent of the copyright owner is strictly prohibited and may result in civil and criminal penalties.</p>
+</footer>
 
 <script>
-   const backToTopBtn = document.querySelector("#btn-back-to-top");
+  // ---------- Theme (shared key with Home page) ----------
+  (function(){
+    const saved = localStorage.getItem('site-theme');
+    const initial = saved || 'dark';
+    document.documentElement.setAttribute('data-theme', initial);
+    document.addEventListener('DOMContentLoaded', () => {
+      const knob = document.getElementById('theme-knob');
+      if(knob) knob.textContent = initial === 'light' ? '☀️' : '🌙';
+    });
+  })();
 
-window.addEventListener("scroll", () => {
-
-  if (window.scrollY > 300) {
-    backToTopBtn.classList.add("show");
-  } else {
-    backToTopBtn.classList.remove("show");
-  }
-});
-
-backToTopBtn.addEventListener("click", () => {
-  window.scrollTo({
-    top: 0,
-    behavior: "smooth"
+  document.getElementById('theme-toggle').addEventListener('click', () => {
+    const root = document.documentElement;
+    const next = root.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+    root.setAttribute('data-theme', next);
+    localStorage.setItem('site-theme', next);
+    document.getElementById('theme-knob').textContent = next === 'light' ? '☀️' : '🌙';
   });
-});
+
+  // ---------- People data ----------
+  const people = [
+    {
+      nickname: "Fifa", fullname: "Phasit Pongpisansakul",
+      img: "./About_files/about 2.jpg",
+      quote: "ช่วงเวลาที่เริ่มต้นผ่านไปเร็ว แต่ตอนนี้คงไม่มีอีกแล้ว.",
+      date: "Said when 1 April 2026."
+    },
+    {
+      nickname: "Show", fullname: "Pongsathorn Siriboon",
+      img: "./About_files/about 3.jpg",
+      quote: "กำขี้ดีกว่ากำตด",
+      date: "Said when 1 April 2026."
+    },
+    {
+      nickname: "Than", fullname: "Rittichai Mangsoongnoen",
+      img: "./About_files/about 4.jpg",
+      quote: "ลืมไปว่าทุกวันอาจไม่ได้เจอเธอเหมือนเดิม ลืมไปว่าฉันควรจะกอดเธอไว้ ลืมไปว่าชีวิตเปราะบางขนาดไหน",
+      date: "Said when 1 April 2026."
+    },
+    {
+      nickname: "Keng", fullname: "ding_hahain",
+      img: "./About_files/about 5.jpg",
+      quote: "เขาก็เหมือนป้อม ถ้ารักษาไม่ได้ก็อย่าหวังกับความรัก",
+      date: "Said when 1 April 2026."
+    },
+    {
+      nickname: "Bus", fullname: "Koramin Thammaphilukkul",
+      img: "./About_files/about 6.jpg",
+      quote: "เรียนจบแล้ว แต่ความรู้ยังโหลดไม่ครบ",
+      date: "Said when 1 April 2026."
+    },
+    {
+      nickname: "Assassin X", fullname: "",
+      img: "./About_files/about 9.jpg",
+      quote: "อยู่กับเธอมันแย่ อยู่กับแม่ดีกว่า",
+      date: "Said when 1 April 2026."
+    },
+    {
+      nickname: "Manu", fullname: "Chatchai Dechkung",
+      img: "./About_files/about 10.jpg",
+      quote: "ไม่มีอะไรเกิดขึ้นได้โดยปราศจากการเริ่มต้น",
+      date: "Said when 1 April 2026."
+    },
+    {
+      nickname: "Cap", fullname: "",
+      img: "./About_files/about 12.jpg",
+      quote: "you will never understand how it work until you understand yourself",
+      date: "Said when 2 April 2026."
+    },
+    {
+      nickname: "Zoom", fullname: "Ratsarun Chongrakdee",
+      img: "./About_files/about 13.jpg",
+      quote: "ไม่ว่ายังไงกูก็ไม่เคยลืมคนที่ทำดีกับกู",
+      date: "Said when 1 April 2026."
+    },
+    {
+      nickname: "Ken", fullname: "Mahasajun Jamjun",
+      img: "./About_files/about 15.jpg",
+      quote: "ถ้าไม่เชื่อในตัวเอง ลองเชื่อในสิ่งที่ทำที่เชื่อในตัวเองดูสิ",
+      date: "Said when 2 April 2026."
+    },
+    {
+      nickname: "Yindee", fullname: "Ranchida Sanukit",
+      img: "./About_files/about 35.jpg",
+      quote: "ซีเคร็ตก็อยู่นี่ไง จะเบียวอาวีเนอะเพื่อนห์ๆ",
+      date: "Said when 2 April 2026."
+    }
+  ];
+
+  const grid = document.getElementById('people');
+  people.forEach((p, i) => {
+    const card = document.createElement('div');
+    card.className = 'p-card';
+    card.setAttribute('role', 'button');
+    card.setAttribute('tabindex', '0');
+    card.dataset.index = i;
+    
+    // บรรทัดสำคัญ: ทยอยหน่วงเวลาการปรากฏตัวใบละ 0.05 วินาที
+    card.style.animationDelay = `${i * 0.05}s`; 
+    
+    card.innerHTML = `
+      <img src="${p.img}" alt="${p.nickname}" loading="lazy">
+      <div class="p-card-scrim"></div>
+      <div class="p-card-info">
+        <h3>${p.nickname}</h3>
+        <p>${p.fullname}</p>
+      </div>
+    `;
+    grid.appendChild(card);
+  });
+
+  document.querySelectorAll('.p-card').forEach(card => {
+    card.addEventListener('mousemove', e => {
+      const r = card.getBoundingClientRect();
+      card.style.setProperty('--mx', (e.clientX - r.left) + 'px');
+      card.style.setProperty('--my', (e.clientY - r.top) + 'px');
+    });
+  });
+
+  // ---------- Detail modal ----------
+  const pmodal = document.getElementById('pmodal');
+  function openPModal(i){
+    const p = people[i];
+    document.getElementById('pmodal-img').src = p.img;
+    document.getElementById('pmodal-img').alt = p.nickname;
+    document.getElementById('pmodal-name').textContent = p.nickname;
+    document.getElementById('pmodal-fullname').textContent = p.fullname;
+    document.getElementById('pmodal-quote').textContent = '"' + p.quote + '"';
+    document.getElementById('pmodal-date').textContent = p.date;
+    
+    // สั่งเปิด Modal โดยการเปลี่ยนคุณสมบัติ CSS ลื่นๆ ผ่านคลาส open
+    pmodal.style.display = 'flex';
+    setTimeout(() => {
+      pmodal.classList.add('open');
+    }, 10);
+    document.body.style.overflow = 'hidden';
+  }
+  function closePModal(){
+    pmodal.classList.remove('open');
+    // หน่วงเวลาเคลียร์ค่า display ให้พอดีกับการสไลด์เฟดออกของ CSS (.4s)
+    setTimeout(() => {
+      if(!pmodal.classList.contains('open')) {
+        pmodal.style.display = 'none';
+      }
+    }, 400);
+    document.body.style.overflow = '';
+  }
+  grid.addEventListener('click', e => {
+    const card = e.target.closest('.p-card');
+    if(card) openPModal(parseInt(card.dataset.index));
+  });
+  grid.addEventListener('keydown', e => {
+    if((e.key === 'Enter' || e.key === ' ') && e.target.classList.contains('p-card')){
+      e.preventDefault();
+      openPModal(parseInt(e.target.dataset.index));
+    }
+  });
+  document.getElementById('pmodal-close-x').addEventListener('click', closePModal);
+  document.getElementById('pmodal-close-btn').addEventListener('click', closePModal);
+  pmodal.addEventListener('click', e => { if(e.target === pmodal) closePModal(); });
+  document.addEventListener('keydown', e => {
+    if(pmodal.classList.contains('open') && e.key === 'Escape') closePModal();
+  });
+
+  // ---------- Back to top ----------
+  const backToTopBtn = document.querySelector("#btn-back-to-top");
+  window.addEventListener("scroll", () => {
+    backToTopBtn.classList.toggle("show", window.scrollY > 300);
+  });
+  backToTopBtn.addEventListener("click", () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
 </script>
-    <h5 class="text-center" style="font-style: italic; padding: 60px;">"กูเชื่อว่าพวกมึงต้องมาเปิดดู"</h5>
-    <p class="text-end" style="font-style: italic; padding: 60px;">Rittichai Mangsoongnoen</p>
-    <h5 class="text-center" style="font-style: italic; padding: 75px;">"ขอบคุณนะทุกคนสำหรับ3ปีที่อยู่ห้องเดียวกันและกลุ่มเดียวกันตลอดระยะเวลาที่ผ่านมาเรารู้สึกว่าพวกเราสนิกกันมากเลยตั้งแต่ม.1ถึงตอนนี้ถึงจะเจออะไรที่เป็นอุปสรรคแต่พวกเราก็ผ่านมาได้ตอนนี้เราอาจจะไม่ได้
-      เจอกันในชีวิตจริงอีกแล้วสำหรับบางคนแต่บางคนก็อาจจะยังเจอแบบผ่านก็ขอให้ทุกคนโชคดีนะกับทางเลือกม.ปลายหรือปวช.goodluck ลาก่อนน้า"</h5>
-      <h5 class="text-center" style="font-style: italic; padding: 75px;">"ฮัลโหลห์ มายเฟรนด์เพื่อนยอดรัก นี่ก็ผ่านมาสามปีแล้วตอนแรกก็คิดว่าจะไม่มีเพื่อนสะอีก มาสนิทกันยังไงไม่รู้แต่ก็ดีใจมากที่ได้พวกมึงมาเป็นเพื่อนกัน อาจจะมีล้อชื่อพ่อชื่อแม่บ้าง ขอลอกการบ้านบ้าง แต่ก็ร้ากยกเว้นไอเคน เป้นไรไม่รู้ยั่วโมโหตลอดเลยอยากโดนวีนหรอจ้ะ หยอกๆนะพอได้ฟิลขำๆตลกๆ ขอให้โชคดีกับสิ่งที่เลือกเดินเส้นทางของตัวเองนะ ถึงแม้จะอยู่คนละห้อง คนละสาย หรือคนละสถาบันแต่จำไว้เลยนะว่ามันตัวซีเคร็ทอย่างกูคอยปรึกษา คอยให้พวกมึงปสด.ทุกวัน ยิ้มเยอะๆให้มีความสุข เจอสังคมใหม่ดีๆนะแม่นะ ชวนเล่นเซไกก้เล่นได้ เลิฟยูเอวี้วันมั้กๆ รักพวกมึงที่สุด"</h5>
-    <p class="text-end" style="font-style: italic; padding: 60px;">A message sent from someone.</p>
-    <h3 class="text-center" style="font-style: italic; padding: 60px;">The End.</h3>
+
 </body>
-<footer>
-    <div class="container">
-        <footer class="py-3 my-4">
-            <ul class="nav justify-content-center border-bottom pb-3 mb-3">
-                <li class="nav-item">
-                    <a href="index.html" class="nav-link px-2 text-body-secondary">Home</a></li>
-                <li class="nav-item">
-                    <a href="index2.html" class="nav-link px-2 text-body-secondary">About</a>
-                </li>
-            </ul>
-            <p>Copyright &copy; 2023-2026 All Rights Reserved. Developed using <a href="https://getbootstrap.com/" target="_blank">Bootstrap</a> under the <a href="https://opensource.org/licenses/MIT" target="_blank">MIT License</a>.</p>
-</footer> 
-<!-- Bootstrap JS Bundle -->
-</html>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
 </html>
